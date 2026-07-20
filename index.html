@@ -1,16 +1,527 @@
-<!-- LÓGICA DE PROGRAMACIÓN INTERACTIVA -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyería Solar - Catalog & Store</title>
+    <style>
+        /* --- ESTILOS GENERALES Y PALETA DE COLORES --- */
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-gold: #AA7C11;
+            --dark-bg: #121212;
+            --light-bg: #F9F9F9;
+            --card-bg: #FFFFFF;
+            --text-color: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            padding-bottom: 60px;
+        }
+
+        /* --- ENCABEZADO Y NAVEGACIÓN --- */
+        header {
+            background-color: var(--dark-bg);
+            color: #FFF;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            flex-grow: 1;
+            justify-content: flex-end;
+        }
+
+        /* Buscador */
+        .search-container {
+            position: relative;
+            min-width: 200px;
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--primary-gold);
+            outline: none;
+            background: #222;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+
+        .search-container input::placeholder {
+            color: #aaa;
+        }
+
+        /* Menú Desplegable Colecciones */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            background-color: transparent;
+            color: var(--primary-gold);
+            border: 1px solid var(--primary-gold);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .dropdown-btn:hover {
+            background-color: var(--primary-gold);
+            color: var(--dark-bg);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background-color: #222;
+            min-width: 180px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 101;
+        }
+
+        .dropdown-content.open {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--primary-gold);
+            color: var(--dark-bg);
+        }
+
+        /* Botón Carrito */
+        .cart-btn {
+            background: var(--primary-gold);
+            border: none;
+            color: var(--dark-bg);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: var(--dark-gold);
+            color: #fff;
+        }
+
+        .cart-badge {
+            background: var(--dark-bg);
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 7px;
+            font-size: 0.8rem;
+        }
+
+        /* --- CONTENEDOR DE PRODUCTOS --- */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .collection-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .grid-joyas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .joya-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .joya-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .joya-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            background-color: #eee;
+            margin-bottom: 12px;
+        }
+
+        .joya-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .joya-sku {
+            font-size: 0.75rem;
+            color: #777;
+            margin-bottom: 8px;
+        }
+
+        .joya-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--dark-gold);
+            margin-bottom: 12px;
+        }
+
+        .btn-add {
+            background: var(--dark-bg);
+            color: var(--primary-gold);
+            border: 1px solid var(--primary-gold);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-add:hover {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+        }
+
+        /* --- PANEL LATERAL DEL CARRITO (SLIDE) --- */
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100%;
+            background: #fff;
+            box-shadow: -4px 0 15px rgba(0,0,0,0.3);
+            z-index: 200;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .cart-panel.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .cart-header h3 {
+            font-size: 1.2rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.85rem;
+        }
+
+        .cart-item-remove {
+            color: #e74c3c;
+            cursor: pointer;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .cart-footer {
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn-whatsapp {
+            width: 100%;
+            background: #25D366;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebc57;
+        }
+
+        /* Leyenda Atajos de Teclado */
+        .keyboard-hint {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .cart-panel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo">Joyería Solar</div>
+        
+        <div class="header-controls">
+            <!-- Buscador -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Buscar por nombre o SKU..." onkeyup="searchJewels()">
+            </div>
+
+            <!-- Filtro de Categorías -->
+            <div class="dropdown">
+                <button class="dropdown-btn" onclick="toggleDropdown()">Colecciones ▼</button>
+                <div class="dropdown-content" id="dropdownMenu">
+                    <a href="#" onclick="filterCollection('todas', 'Todas las Joyas')">Ver Todas</a>
+                    <a href="#" onclick="filterCollection('anillos', 'Anillos')">Anillos</a>
+                    <a href="#" onclick="filterCollection('collares', 'Collares')">Collares</a>
+                    <a href="#" onclick="filterCollection('pulseras', 'Pulseras')">Pulseras</a>
+                    <a href="#" onclick="filterCollection('aros', 'Aros')">Aros</a>
+                </div>
+            </div>
+
+            <!-- Botón Ver Carrito -->
+            <button class="cart-btn" onclick="toggleCartPanel()">
+                🛒 Carrito <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- CATÁLOGO PRINCIPAL -->
+    <main class="container">
+
+        <!-- SECCIÓN: ANILLOS -->
+        <section class="collection-section" id="anillos">
+            <h2 class="section-title">Anillos</h2>
+            <div class="grid-joyas">
+                <div class="joya-card" data-name="Anillo Solitario Oro" data-sku="AN-001">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=300" alt="Anillo Solitario" class="joya-img">
+                    <div>
+                        <div class="joya-title">Anillo Solitario Oro</div>
+                        <div class="joya-sku">SKU: AN-001</div>
+                        <div class="joya-price">$120.000</div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('Anillo Solitario Oro', 'AN-001', 120000)">Agregar al Carrito</button>
+                </div>
+
+                <div class="joya-card" data-name="Anillo Plata Esmeralda" data-sku="AN-002">
+                    <img src="https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=300" alt="Anillo Esmeralda" class="joya-img">
+                    <div>
+                        <div class="joya-title">Anillo Plata Esmeralda</div>
+                        <div class="joya-sku">SKU: AN-002</div>
+                        <div class="joya-price">$85.000</div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('Anillo Plata Esmeralda', 'AN-002', 85000)">Agregar al Carrito</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: COLLARES -->
+        <section class="collection-section" id="collares">
+            <h2 class="section-title">Collares</h2>
+            <div class="grid-joyas">
+                <div class="joya-card" data-name="Collar Medalla Sol" data-sku="COL-001">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=300" alt="Collar Medalla Sol" class="joya-img">
+                    <div>
+                        <div class="joya-title">Collar Medalla Sol</div>
+                        <div class="joya-sku">SKU: COL-001</div>
+                        <div class="joya-price">$95.000</div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('Collar Medalla Sol', 'COL-001', 95000)">Agregar al Carrito</button>
+                </div>
+
+                <div class="joya-card" data-name="Collar Perlas Cultivadas" data-sku="COL-002">
+                    <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=300" alt="Collar Perlas" class="joya-img">
+                    <div>
+                        <div class="joya-title">Collar Perlas Cultivadas</div>
+                        <div class="joya-sku">SKU: COL-002</div>
+                        <div class="joya-price">$110.000</div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('Collar Perlas Cultivadas', 'COL-002', 110000)">Agregar al Carrito</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: PULSERAS -->
+        <section class="collection-section" id="pulseras">
+            <h2 class="section-title">Pulseras</h2>
+            <div class="grid-joyas">
+                <div class="joya-card" data-name="Pulsera Eslabón Dorado" data-sku="PUL-001">
+                    <img src="https://images.unsplash.com/photo-1611591475112-9218d6e355c3?w=300" alt="Pulsera Eslabón" class="joya-img">
+                    <div>
+                        <div class="joya-title">Pulsera Eslabón Dorado</div>
+                        <div class="joya-sku">SKU: PUL-001</div>
+                        <div class="joya-price">$70.000</div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('Pulsera Eslabón Dorado', 'PUL-001', 70000)">Agregar al Carrito</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: AROS -->
+        <section class="collection-section" id="aros">
+            <h2 class="section-title">Aros</h2>
+            <div class="grid-joyas">
+                <div class="joya-card" data-name="Aros Argolla Clásica" data-sku="ARO-001">
+                    <img src="https://images.unsplash.com/photo-1630019852942-f89202989a59?w=300" alt="Aros Argolla" class="joya-img">
+                    <div>
+                        <div class="joya-title">Aros Argolla Clásica</div>
+                        <div class="joya-sku">SKU: ARO-001</div>
+                        <div class="joya-price">$45.000</div>
+                    </div>
+                    <button class="btn-add" onclick="addToCart('Aros Argolla Clásica', 'ARO-001', 45000)">Agregar al Carrito</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PANEL LATERAL DE CARRITO -->
+    <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" onclick="toggleCartPanel()">✕</button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <!-- Los productos agregados se insertan dinámicamente aquí -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button class="btn-whatsapp" onclick="sendWhatsAppOrder(event)">
+                📱 Enviar Pedido por WhatsApp
+            </button>
+            <div class="keyboard-hint">
+                💡 Pistas: Presiona <b>ENTER</b> para enviar pedido | <b>ESC</b> para cerrar.
+            </div>
+        </div>
+    </div>
+
+    <!-- LÓGICA DE PROGRAMACIÓN Y EVENTOS -->
     <script>
-        // --- 1. MENÚ DE CATEGORÍAS ---
+        // --- 1. DROPDOWN DE COLECCIONES ---
         function toggleDropdown() {
-            document.getElementById('dropdownMenu').classList.toggle('open');
+            const dropdown = document.getElementById('dropdownMenu');
+            if (dropdown) dropdown.classList.toggle('open');
         }
 
         function filterCollection(category, categoryName) {
-            document.getElementById('dropdownMenu').classList.remove('open');
-            document.querySelector('.dropdown-btn').innerHTML = categoryName + ' ▼';
+            const dropdown = document.getElementById('dropdownMenu');
+            if (dropdown) dropdown.classList.remove('open');
 
-            // Limpiamos buscador si se usa el filtro por categoría
-            document.getElementById('searchInput').value = "";
+            const btn = document.querySelector('.dropdown-btn');
+            if (btn) btn.innerHTML = categoryName + ' ▼';
+
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.value = "";
 
             const sections = document.querySelectorAll('.collection-section');
             sections.forEach(section => {
@@ -24,43 +535,44 @@
 
         // --- 2. BUSCADOR EN TIEMPO REAL ---
         function searchJewels() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.joya-card');
+            const searchInput = document.getElementById('searchInput');
+            if (!searchInput) return;
+
+            const query = searchInput.value.toLowerCase().trim();
             const sections = document.querySelectorAll('.collection-section');
 
-            // Resetear nombre del botón de colecciones al buscar
-            document.querySelector('.dropdown-btn').innerHTML = 'Colecciones ▼';
+            const btn = document.querySelector('.dropdown-btn');
+            if (btn) btn.innerHTML = 'Colecciones ▼';
 
             sections.forEach(section => {
                 let hasVisibleCards = false;
                 const sectionCards = section.querySelectorAll('.joya-card');
-                
+
                 sectionCards.forEach(card => {
-                    const name = card.getAttribute('data-name').toLowerCase();
-                    const sku = card.getAttribute('data-sku').toLowerCase();
+                    const name = (card.getAttribute('data-name') || '').toLowerCase();
+                    const sku = (card.getAttribute('data-sku') || '').toLowerCase();
 
                     if (name.includes(query) || sku.includes(query)) {
-                        card.style.display = 'block';
+                        card.style.display = 'flex';
                         hasVisibleCards = true;
                     } else {
                         card.style.display = 'none';
                     }
                 });
 
-                // Si la sección no tiene ningún producto que coincida, se oculta entera
                 section.style.display = hasVisibleCards ? 'block' : 'none';
             });
         }
 
-        // --- 3. SISTEMA DEL CARRITO DE COMPRAS ---
+        // --- 3. CARRITO DE COMPRAS ---
         let cart = [];
 
         function toggleCartPanel() {
-            document.getElementById('cartPanel').classList.toggle('open');
+            const cartPanel = document.getElementById('cartPanel');
+            if (cartPanel) cartPanel.classList.toggle('open');
         }
 
         function addToCart(name, sku, price) {
-            // Verificar si el producto ya existe en el carrito
             const existingItem = cart.find(item => item.sku === sku);
             if (existingItem) {
                 existingItem.quantity += 1;
@@ -68,9 +580,10 @@
                 cart.push({ name, sku, price, quantity: 1 });
             }
             updateCartUI();
-            
-            // Abrir automáticamente el panel al agregar para dar feedback visual
-            document.getElementById('cartPanel').classList.add('open');
+
+            // Abre el carrito automáticamente al agregar
+            const cartPanel = document.getElementById('cartPanel');
+            if (cartPanel) cartPanel.classList.add('open');
         }
 
         function removeFromCart(sku) {
@@ -83,38 +596,44 @@
             const itemsContainer = document.getElementById('cartItems');
             const totalContainer = document.getElementById('cartTotal');
 
-            // Actualizar total artículos badge
             const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
-            badge.innerText = totalItems;
+            if (badge) badge.innerText = totalItems;
 
-            // Limpiar contenedor de items
-            itemsContainer.innerHTML = "";
+            if (itemsContainer) itemsContainer.innerHTML = "";
             let grandTotal = 0;
 
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                grandTotal += itemTotal;
+            if (cart.length === 0 && itemsContainer) {
+                itemsContainer.innerHTML = `<p style="text-align:center; color:#888; margin-top:20px;">Tu carrito está vacío.</p>`;
+            } else {
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    grandTotal += itemTotal;
 
-                const row = document.createElement('div');
-                row.className = 'cart-item';
-                row.innerHTML = `
-                    <div>
-                        <strong>${item.name}</strong> (x${item.quantity})<br>
-                        <span style="color:#777; font-size:0.7rem;">${item.sku}</span>
-                    </div>
-                    <div style="display:flex; align-items:center;">
-                        <span>$${itemTotal.toLocaleString('es-CL')}</span>
-                        <span class="cart-item-remove" onclick="removeFromCart('${item.sku}')">✕</span>
-                    </div>
-                `;
-                itemsContainer.appendChild(row);
-            });
+                    if (itemsContainer) {
+                        const row = document.createElement('div');
+                        row.className = 'cart-item';
+                        row.innerHTML = `
+                            <div>
+                                <strong>${item.name}</strong> (x${item.quantity})<br>
+                                <span style="color:#777; font-size:0.75rem;">${item.sku}</span>
+                            </div>
+                            <div style="display:flex; align-items:center;">
+                                <span style="font-weight:600;">$${itemTotal.toLocaleString('es-CL')}</span>
+                                <span class="cart-item-remove" onclick="removeFromCart('${item.sku}')" title="Eliminar">✕</span>
+                            </div>
+                        `;
+                        itemsContainer.appendChild(row);
+                    }
+                });
+            }
 
-            totalContainer.innerText = `$${grandTotal.toLocaleString('es-CL')}`;
+            if (totalContainer) totalContainer.innerText = `$${grandTotal.toLocaleString('es-CL')}`;
         }
 
+        // --- 4. ENVÍO DE ORDEN POR WHATSAPP ---
         function sendWhatsAppOrder(event) {
             if (event) event.preventDefault();
+
             if (cart.length === 0) {
                 alert("Tu carrito está vacío. Agrega algunas joyas antes de enviar.");
                 return;
@@ -134,25 +653,23 @@
             message += `-------------------------\n`;
             message += `Quedo atento(a) para coordinar el pago y envío. ¡Muchas gracias!`;
 
-            // Codificar el mensaje de forma segura para la URL
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/56967109265?text=${encodedMessage}`;
-            
-            // Abrir WhatsApp en pestaña nueva
+
             window.open(whatsappUrl, '_blank');
         }
 
-        // CERRAR MENÚS AL HACER CLIC AFUERA
+        // --- 5. CERRAR MENÚ AL CLICKEAR AFUERA ---
         window.onclick = function(event) {
             if (!event.target.matches('.dropdown-btn')) {
                 const dropdown = document.getElementById('dropdownMenu');
-                if (dropdown.classList.contains('open')) {
+                if (dropdown && dropdown.classList.contains('open')) {
                     dropdown.classList.remove('open');
                 }
             }
         }
 
-        // --- 4. ESCUCHADOR DE TECLAS (ENTER Y ESC) ---
+        // --- 6. EVENTOS DE TECLADO (ENTER Y ESC) ---
         document.addEventListener('keydown', function(event) {
             const searchInput = document.getElementById('searchInput');
             const cartPanel = document.getElementById('cartPanel');
@@ -160,34 +677,39 @@
 
             // --- TECLA ESCAPE (ESC) ---
             if (event.key === 'Escape' || event.key === 'Esc') {
-                // 1. Si la barra de búsqueda tiene foco o texto, se limpia
-                if (document.activeElement === searchInput || searchInput.value !== "") {
+                // 1. Limpia buscador si tiene texto o foco
+                if (searchInput && (document.activeElement === searchInput || searchInput.value !== "")) {
                     searchInput.value = "";
-                    searchJewels(); // Restaura la vista de todos los productos
-                    searchInput.blur(); // Quita el foco del buscador
+                    searchJewels();
+                    searchInput.blur();
                 }
 
-                // 2. Si el carrito está abierto, lo cierra
-                if (cartPanel.classList.contains('open')) {
+                // 2. Cierra carrito si está abierto
+                if (cartPanel && cartPanel.classList.contains('open')) {
                     cartPanel.classList.remove('open');
                 }
 
-                // 3. Si el menú desplegable está abierto, lo cierra
-                if (dropdownMenu.classList.contains('open')) {
+                // 3. Cierra menú desplegable si está abierto
+                if (dropdownMenu && dropdownMenu.classList.contains('open')) {
                     dropdownMenu.classList.remove('open');
                 }
             }
 
             // --- TECLA ENTER ---
             if (event.key === 'Enter') {
-                // 1. Si el cliente está escribiendo en la barra de búsqueda, desenfoca el input
-                if (document.activeElement === searchInput) {
+                // 1. Si está en el buscador, des-enfoca para ver los resultados libremente
+                if (searchInput && document.activeElement === searchInput) {
                     searchInput.blur();
-                } 
-                // 2. Si el panel del carrito está abierto, envía la orden directamente
-                else if (cartPanel.classList.contains('open')) {
+                }
+                // 2. Si el carrito está abierto, dispara el envío a WhatsApp directamente
+                else if (cartPanel && cartPanel.classList.contains('open')) {
                     sendWhatsAppOrder(event);
                 }
             }
         });
+
+        // Inicializar carrito vacío
+        updateCartUI();
     </script>
+</body>
+</html>
