@@ -15,42 +15,63 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Barra de Navegación Fina */
+        /* Barra de Navegación Fina y Alineada */
         nav {
             display: flex;
-            justify-content: center;
-            gap: 3rem;
-            padding: 1.5rem 1rem;
+            justify-content: space-between; /* Separa el logo a la izquierda y enlaces a la derecha */
+            align-items: center;
+            padding: 1rem 2rem;
             border-bottom: 1px solid #eeeeee;
+        }
+
+        /* Logo pequeño y sutil en el menú superior izquierdo */
+        .logo-nav {
+            height: 45px; /* Tamaño discreto y elegante para el menú */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
             font-family: 'Helvetica Neue', Arial, sans-serif;
             text-transform: uppercase;
             font-size: 0.75rem;
             letter-spacing: 2px;
         }
 
-        nav a {
+        .nav-links a {
             color: #555555;
             text-decoration: none;
             transition: color 0.3s;
         }
 
-        nav a:hover {
+        .nav-links a:hover {
             color: #111111;
         }
 
-        /* Encabezado Principal con Logo */
+        /* Encabezado Principal (Vuelve el Texto Elegante) */
         header {
             text-align: center;
-            padding: 4rem 1rem 2rem 1rem;
+            padding: 6rem 1rem 4rem 1rem;
             background-color: #ffffff;
         }
 
-        /* Estilo para que el logo sea responsivo y elegante */
-        .logo-shop {
-            max-width: 220px; /* Tamaño ideal para que luzca fino */
-            width: 100%;
-            height: auto;
-            object-fit: contain;
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: #111111;
+        }
+
+        header p {
+            color: #888888;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 1.2rem;
         }
 
         /* Contenedor Principal */
@@ -151,28 +172,32 @@
             line-height: 1.8;
         }
 
-        footer .brand {
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 1.5rem;
-            color: #111111;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
+        /* Logo de tamaño completo al final de la página */
+        .logo-footer {
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
         }
     </style>
 </head>
 <body>
 
+    <!-- Menú de navegación con el logo a la izquierda -->
     <nav>
-        <a href="#">Inicio</a>
-        <a href="#">Colecciones</a>
-        <a href="#">Plata 925</a>
-        <a href="#">Contacto</a>
+        <img src="https://i.postimg.cc/d1Dq6bGT/9400ae32-fcbd-4f4a-bdab-30380faa4e0f.png" alt="Logo Icono Joyería Solar" class="logo-nav">
+        <div class="nav-links">
+            <a href="#">Inicio</a>
+            <a href="#">Colecciones</a>
+            <a href="#">Plata 925</a>
+            <a href="#">Contacto</a>
+        </div>
     </nav>
 
     <header>
-        <!-- Tu logo real enlazado directamente -->
-        <img src="https://i.postimg.cc/d1Dq6bGT/9400ae32-fcbd-4f4a-bdab-30380faa4e0f.png" alt="Logo Joyería Solar" class="logo-shop">
+        <h1>Joyería Solar</h1>
+        <p>Plata Nacional Extra Fina</p>
     </header>
 
     <div class="container">
@@ -214,8 +239,9 @@
         </div>
     </div>
 
+    <!-- Pie de página con el logo principal -->
     <footer>
-        <div class="brand">Joyería Solar</div>
+        <img src="https://i.postimg.cc/d1Dq6bGT/9400ae32-fcbd-4f4a-bdab-30380faa4e0f.png" alt="Logo Principal Joyería Solar" class="logo-footer">
         <p>Garantía de por vida en la pureza del metal.<br>
         Santiago de Chile — Envíos a todo el país.</p>
         <p style="margin-top: 2rem; color: #bbb; font-size: 0.7rem;">&copy; 2026 Joyería Solar. Todos los derechos reservados.</p>
