@@ -5,16 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyería Solar | Alta Orfebrería en Plata 925</title>
     <style>
-        /* Base de Alta Gama con Fondo Ocre Texturizado */
+        /* Base Limpia y Elegante con Fondo Marfil Premium */
         body {
             font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;
             margin: 0;
             padding: 0;
-            /* Tono ocre premium con un sutil grano de textura */
-            background-color: #dfba73;
-            background-image: radial-gradient(rgba(0,0,0,0.05) 1px, transparent 0), radial-gradient(rgba(0,0,0,0.05) 1px, transparent 0);
-            background-size: 4px 4px;
-            background-position: 0 0, 2px 2px;
+            background-color: #fbf9f5; /* Blanco hueso / marfil sofisticado y luminoso */
             color: #080808; /* Negro brillante */
             -webkit-font-smoothing: antialiased;
         }
@@ -25,8 +21,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
-            border-bottom: 1px solid rgba(8, 8, 8, 0.1);
-            background-color: rgba(223, 186, 115, 0.95);
+            border-bottom: 1px solid rgba(8, 8, 8, 0.06);
+            background-color: rgba(251, 249, 245, 0.95);
         }
 
         .logo-nav {
@@ -58,50 +54,49 @@
         /* Encabezado Principal */
         header {
             text-align: center;
-            padding: 5rem 1rem 2rem 1rem;
+            padding: 4rem 1rem 1rem 1rem;
         }
 
         header h1 {
             margin: 0;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             letter-spacing: 7px;
             text-transform: uppercase;
             font-weight: 300;
             color: #080808; /* Negro brillante */
-            text-shadow: 0px 1px 1px rgba(255,255,255,0.4);
         }
 
         header p {
-            color: #1a1a1a;
-            font-size: 1rem;
+            color: #444444;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-top: 1.2rem;
+            margin-top: 1rem;
             font-weight: bold;
         }
 
-        /* CONTENEDOR DE BOTÓN "COLECCIONES" DESPLEGABLE */
+        /* BOTÓN "COLECCIONES" DESPLEGABLE */
         .dropdown-container {
             position: relative;
             display: flex;
             justify-content: center;
-            margin: 2rem auto 4rem auto;
+            margin: 2rem auto 3rem auto;
             z-index: 100;
         }
 
         .dropdown-btn {
             background-color: #080808; /* Negro brillante */
-            color: #dfba73; /* Texto ocre */
+            color: #ffd700; /* Texto Dorado */
             border: 1px solid #ffd700; /* Detalle dorado */
-            padding: 0.8rem 2.5rem;
+            padding: 0.7rem 2.2rem;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
         .dropdown-btn:hover {
@@ -116,7 +111,7 @@
             background-color: #080808; /* Negro brillante */
             border: 1px solid #ffd700; /* Dorado brillante */
             min-width: 200px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
             padding: 0.5rem 0;
             margin: 0;
             list-style: none;
@@ -135,23 +130,21 @@
         }
 
         .dropdown-menu li a:hover {
-            background-color: #ffd700; /* Fondo dorado al pasar el cursor */
-            color: #080808; /* Texto negro brillante */
+            background-color: #ffd700; 
+            color: #080808; 
         }
 
-        /* Mostrar el menú al activar clase */
         .dropdown-container.open .dropdown-menu {
             display: block;
         }
 
         /* Contenedor Principal */
         .container {
-            max-width: 1150px;
+            max-width: 1200px;
             margin: 0 auto 5rem auto;
             padding: 0 1.5rem;
         }
 
-        /* Contenedor de cada Colección */
         .collection-section {
             transition: opacity 0.4s ease;
         }
@@ -159,114 +152,116 @@
         /* Títulos de las Secciones */
         .collection-title {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: normal;
             letter-spacing: 4px;
             text-transform: uppercase;
-            margin: 4rem 0 3rem 0;
+            margin: 4rem 0 2.5rem 0;
             position: relative;
-            color: #080808; /* Negro brillante */
+            color: #080808;
         }
 
         .collection-title::after {
             content: '';
             display: block;
-            width: 40px;
+            width: 30px;
             height: 1px;
-            background: #080808;
-            margin: 1rem auto 0 auto;
+            background: #ffd700; /* Línea divisoria ahora dorada fina */
+            margin: 0.8rem auto 0 auto;
         }
 
-        /* Catálogo en Cuadrícula */
+        /* Catálogo en Cuadrícula - AHORA MÁS COMPACTO (Min 210px para meter más por fila) */
         .catalog {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.8rem;
         }
 
-        /* Tarjeta de Joya con Borde Dorado Brillante */
+        /* Tarjeta de Joya Más Pequeña y Estilizada */
         .joya-card {
             background: #ffffff;
             text-align: center;
-            padding-bottom: 2rem;
-            border: 2px solid #ffd700; /* Borde Dorado Brillante */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            padding-bottom: 1.5rem;
+            border: 1px solid #ffd700; /* Borde Dorado Brillante más fino para balancear el tamaño */
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .joya-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(255,215,0,0.15); /* Sutil destello dorado al pasar el cursor */
         }
 
+        /* Contenedor de Imagen Reducido */
         .joya-img-container {
             width: 100%;
-            height: 320px;
-            background-color: #fcf9f2;
+            height: 240px; /* Reducido de 320px a 240px para hacer la tarjeta más compactas */
+            background-color: #faf8f5;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.2rem;
-            border-bottom: 1px solid #ffd700; /* Separador dorado */
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
         }
 
         .joya-img-placeholder {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            color: #8a7343;
-            font-size: 0.7rem;
+            color: #a3906b;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             padding: 0 10px;
         }
 
         /* Fuentes de la tarjeta en Negro Brillante */
         .joya-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.1rem; /* Un poco más pequeña para encajar el diseño */
             font-weight: bold;
-            margin: 0.6rem 0 0.3rem 0;
-            color: #080808; /* Negro brillante */
+            margin: 0.5rem 0 0.2rem 0;
+            color: #080808; 
             letter-spacing: 0.5px;
+            padding: 0 10px;
         }
 
         .joya-sku {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.65rem;
-            color: #555555; 
+            font-size: 0.6rem;
+            color: #777777; 
             text-transform: uppercase;
             letter-spacing: 1px;
             margin: 0;
-            font-weight: 600;
         }
 
         .joya-material {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.65rem;
-            color: #333333;
+            font-size: 0.6rem;
+            color: #444444;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.6rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
             font-weight: bold;
         }
 
         .joya-precio {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 1.1rem;
-            color: #080808; /* Negro brillante */
+            font-size: 1rem;
+            color: #080808; 
             font-weight: 700;
-            margin-bottom: 1.2rem;
-            letter-spacing: 1px;
+            margin-bottom: 1rem;
         }
 
+        /* Botón de Pedido Estilizado */
         .btn-pedir {
             display: inline-block;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #080808; /* Negro brillante */
+            background-color: #080808; 
             border: 1px solid #ffd700;
             color: #ffffff;
-            padding: 0.6rem 1.8rem;
+            padding: 0.5rem 1.4rem;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
             font-weight: bold;
             transition: all 0.3s ease;
         }
@@ -279,19 +274,19 @@
 
         /* Pie de Página */
         footer {
-            border-top: 1px solid rgba(8, 8, 8, 0.1);
+            border-top: 1px solid rgba(8, 8, 8, 0.06);
             padding: 4rem 1rem;
             text-align: center;
-            background-color: rgba(0,0,0,0.03);
+            background-color: #faf8f5;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.8rem;
-            color: #111111;
+            font-size: 0.75rem;
+            color: #333333;
             letter-spacing: 1px;
             line-height: 1.8;
         }
 
         .logo-footer {
-            max-width: 220px;
+            max-width: 180px;
             width: 100%;
             height: auto;
             object-fit: contain;
@@ -424,26 +419,21 @@
         <p>Garantía de por vida en la pureza del metal.<br>
         Santiago de Chile — Envíos a todo el país.</p>
         <p>Sígannos en Instagram: <a href="https://instagram.com/joyeria.solar.09" target="_blank">@joyeria.solar.09</a></p>
-        <p style="margin-top: 2rem; color: #111; font-size: 0.7rem;">&copy; 2026 Joyería Solar. Todos los derechos reservados.</p>
+        <p style="margin-top: 2rem; color: #444; font-size: 0.7rem;">&copy; 2026 Joyería Solar. Todos los derechos reservados.</p>
     </footer>
 
     <!-- INTERACTIVIDAD DE MENÚ Y FILTRADO -->
     <script>
-        // Abrir y cerrar el menú desplegable
         function toggleDropdown() {
             document.getElementById('dropdownMenu').classList.toggle('open');
         }
 
-        // Filtrar categorías y cerrar menú al seleccionar una
         function filterCollection(category, categoryName) {
-            // Cerrar el menú
             document.getElementById('dropdownMenu').classList.remove('open');
             
-            // Cambiar el texto del botón principal para mostrar lo seleccionado
             const mainBtn = document.querySelector('.dropdown-btn');
             mainBtn.innerHTML = categoryName + ' ▼';
 
-            // Ejecutar el filtrado visual de las secciones
             const sections = document.querySelectorAll('.collection-section');
             sections.forEach(section => {
                 if (category === 'todas') {
@@ -458,7 +448,6 @@
             });
         }
 
-        // Cerrar el menú si el usuario hace clic afuera de él
         window.onclick = function(event) {
             if (!event.target.matches('.dropdown-btn')) {
                 const dropdown = document.getElementById('dropdownMenu');
