@@ -52,7 +52,7 @@
         /* Encabezado Principal */
         header {
             text-align: center;
-            padding: 5rem 1rem 3rem 1rem;
+            padding: 5rem 1rem 2rem 1rem;
             background-color: #ffffff;
         }
 
@@ -73,11 +73,51 @@
             margin-top: 1.2rem;
         }
 
+        /* BARRA DE FILTROS (Nueva sección) */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem auto 4rem auto;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+
+        .filter-btn {
+            background: none;
+            border: 1px solid #e0e0e0;
+            color: #666666;
+            padding: 0.6rem 1.5rem;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: #111111;
+            color: #111111;
+        }
+
+        .filter-btn.active {
+            background-color: #111111;
+            border-color: #111111;
+            color: #ffffff;
+        }
+
         /* Contenedor Principal */
         .container {
             max-width: 1150px;
             margin: 0 auto 5rem auto;
             padding: 0 1.5rem;
+        }
+
+        /* Contenedor de cada Colección para el filtro */
+        .collection-section {
+            transition: opacity 0.4s ease, display 0.4s ease;
         }
 
         /* Títulos de las Secciones / Colecciones */
@@ -87,7 +127,7 @@
             font-weight: normal;
             letter-spacing: 4px;
             text-transform: uppercase;
-            margin: 6rem 0 3rem 0;
+            margin: 4rem 0 3rem 0;
             position: relative;
             color: #111111;
         }
@@ -232,76 +272,96 @@
         <p>Plata Nacional Extra Fina</p>
     </header>
 
+    <!-- Botones de Filtro Dinámicos -->
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterCollection('todas')">Ver Todo</button>
+        <button class="filter-btn" onclick="filterCollection('anillos')">Anillos</button>
+        <button class="filter-btn" onclick="filterCollection('aros')">Aros Pegados</button>
+        <button class="filter-btn" onclick="filterCollection('collares')">Collares</button>
+        <button class="filter-btn" onclick="filterCollection('pulseras')">Pulseras Hombre</button>
+        <button class="filter-btn" onclick="filterCollection('packaging')">Packaging</button>
+    </div>
+
     <div class="container">
 
         <!-- ================= SECCIÓN: ANILLOS ================= -->
-        <h2 class="collection-title">Anillos</h2>
-        <div class="catalog">
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-001 ]</div></div><p class="joya-sku">SKU: RING-ANI-001</p><p class="joya-material">Plata Ley 925</p><h3>Solitorio</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Solitorio%20(SKU:%20RING-ANI-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-002 ]</div></div><p class="joya-sku">SKU: RING-ANI-002</p><p class="joya-material">Plata Ley 925</p><h3>Trebol</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Trebol%20(SKU:%20RING-ANI-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-003 ]</div></div><p class="joya-sku">SKU: RING-ANI-003</p><p class="joya-material">Plata Ley 925</p><h3>Ola Brillante</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Ola%20Brillante%20(SKU:%20RING-ANI-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-004 ]</div></div><p class="joya-sku">SKU: RING-ANI-004</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Lineado</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Lineado%20(SKU:%20RING-ANI-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-005 ]</div></div><p class="joya-sku">SKU: RING-ANI-005</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Simple</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Simple%20(SKU:%20RING-ANI-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-006 ]</div></div><p class="joya-sku">SKU: RING-ANI-006</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Partido</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Partido%20(SKU:%20RING-ANI-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-007 ]</div></div><p class="joya-sku">SKU: RING-ANI-007</p><p class="joya-material">Plata Ley 925</p><h3>Cristales</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Cristales%20(SKU:%20RING-ANI-007)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-001 ]</div></div><p class="joya-sku">SKU: RING-ANIL-001</p><p class="joya-material">Plata Ley 925</p><h3>Anillo con Halo</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Anillo%20con%20Halo%20(SKU:%20RING-ANIL-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-002 ]</div></div><p class="joya-sku">SKU: RING-ANIL-002</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Celeste</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Celeste%20(SKU:%20RING-ANIL-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-003 ]</div></div><p class="joya-sku">SKU: RING-ANIL-003</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Amarilla</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Amarilla%20(SKU:%20RING-ANIL-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-004 ]</div></div><p class="joya-sku">SKU: RING-ANIL-004</p><p class="joya-material">Plata Ley 925</p><h3>Piedras Brillantes</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedras%20Brillantes%20(SKU:%20RING-ANIL-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-005 ]</div></div><p class="joya-sku">SKU: RING-ANIL-005</p><p class="joya-material">Plata Ley 925</p><h3>Flor Brillante</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Brillante%20(SKU:%20RING-ANIL-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-006 ]</div></div><p class="joya-sku">SKU: RING-ANIL-006</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Roja</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Roja%20(SKU:%20RING-ANIL-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+        <div class="collection-section" id="anillos">
+            <h2 class="collection-title">Anillos</h2>
+            <div class="catalog">
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-001 ]</div></div><p class="joya-sku">SKU: RING-ANI-001</p><p class="joya-material">Plata Ley 925</p><h3>Solitorio</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Solitorio%20(SKU:%20RING-ANI-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-002 ]</div></div><p class="joya-sku">SKU: RING-ANI-002</p><p class="joya-material">Plata Ley 925</p><h3>Trebol</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Trebol%20(SKU:%20RING-ANI-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-003 ]</div></div><p class="joya-sku">SKU: RING-ANI-003</p><p class="joya-material">Plata Ley 925</p><h3>Ola Brillante</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Ola%20Brillante%20(SKU:%20RING-ANI-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-004 ]</div></div><p class="joya-sku">SKU: RING-ANI-004</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Lineado</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Lineado%20(SKU:%20RING-ANI-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-005 ]</div></div><p class="joya-sku">SKU: RING-ANI-005</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Simple</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Simple%20(SKU:%20RING-ANI-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-006 ]</div></div><p class="joya-sku">SKU: RING-ANI-006</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Partido</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Partido%20(SKU:%20RING-ANI-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-007 ]</div></div><p class="joya-sku">SKU: RING-ANI-007</p><p class="joya-material">Plata Ley 925</p><h3>Cristales</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Cristales%20(SKU:%20RING-ANI-007)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-001 ]</div></div><p class="joya-sku">SKU: RING-ANIL-001</p><p class="joya-material">Plata Ley 925</p><h3>Anillo con Halo</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Anillo%20con%20Halo%20(SKU:%20RING-ANIL-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-002 ]</div></div><p class="joya-sku">SKU: RING-ANIL-002</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Celeste</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Celeste%20(SKU:%20RING-ANIL-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-003 ]</div></div><p class="joya-sku">SKU: RING-ANIL-003</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Amarilla</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Amarilla%20(SKU:%20RING-ANIL-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-004 ]</div></div><p class="joya-sku">SKU: RING-ANIL-004</p><p class="joya-material">Plata Ley 925</p><h3>Piedras Brillantes</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedras%20Brillantes%20(SKU:%20RING-ANIL-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-005 ]</div></div><p class="joya-sku">SKU: RING-ANIL-005</p><p class="joya-material">Plata Ley 925</p><h3>Flor Brillante</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Brillante%20(SKU:%20RING-ANIL-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-006 ]</div></div><p class="joya-sku">SKU: RING-ANIL-006</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Roja</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Roja%20(SKU:%20RING-ANIL-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+            </div>
         </div>
 
         <!-- ================= SECCIÓN: AROS PEGADOS ================= -->
-        <h2 class="collection-title">Aros Pegados</h2>
-        <div class="catalog">
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-001 ]</div></div><p class="joya-sku">SKU: AR-FEM-001</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Rosada</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Rosada%20(SKU:%20AR-FEM-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-002 ]</div></div><p class="joya-sku">SKU: AR-FEM-002</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Simple</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Simple%20(SKU:%20AR-FEM-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-003 ]</div></div><p class="joya-sku">SKU: AR-FEM-003</p><p class="joya-material">Plata Ley 925</p><h3>Trebol Pequeño</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Trebol%20Pequeño%20(SKU:%20AR-FEM-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-004 ]</div></div><p class="joya-sku">SKU: AR-FEM-004</p><p class="joya-material">Plata Ley 925</p><h3>Perlas Blancas Pequeñas</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Perlas%20Blancas%20Pequeñas%20(SKU:%20AR-FEM-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-005 ]</div></div><p class="joya-sku">SKU: AR-FEM-005</p><p class="joya-material">Plata Ley 925</p><h3>Triangulos</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Triangulos%20(SKU:%20AR-FEM-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-006 ]</div></div><p class="joya-sku">SKU: AR-FEM-006</p><p class="joya-material">Plata Ley 925</p><h3>Guindas</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Guindas%20(SKU:%20AR-FEM-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-007 ]</div></div><p class="joya-sku">SKU: AR-FEM-007</p><p class="joya-material">Plata Ley 925</p><h3>Cristal Transparente</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Cristal%20Transparente%20(SKU:%20AR-FEM-007)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-008 ]</div></div><p class="joya-sku">SKU: AR-FEM-008</p><p class="joya-material">Plata Ley 925</p><h3>Circon Pequeño</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Circon%20Pequeño%20(SKU:%20AR-FEM-008)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-009 ]</div></div><p class="joya-sku">SKU: AR-FEM-009</p><p class="joya-material">Plata Ley 925</p><h3>Aros Lamina Color Mariposa</h3><div class="joya-precio">$7.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Aros%20Lamina%20Color%20Mariposa%20(SKU:%20AR-FEM-009)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-010 ]</div></div><p class="joya-sku">SKU: AR-FEM-010</p><p class="joya-material">Plata Ley 925</p><h3>Aros Lamina Color Corazón</h3><div class="joya-precio">$7.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Aros%20Lamina%20Color%20Corazón%20(SKU:%20AR-FEM-010)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-011 ]</div></div><p class="joya-sku">SKU: AR-FEM-011</p><p class="joya-material">Plata Ley 925</p><h3>Flor Brillante</h3><div class="joya-precio">$7.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Brillante%20(SKU:%20AR-FEM-011)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-012 ]</div></div><p class="joya-sku">SKU: AR-FEM-012</p><p class="joya-material">Plata Ley 925</p><h3>Perla Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Perla%20Brillante%20(SKU:%20AR-FEM-012)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-013 ]</div></div><p class="joya-sku">SKU: AR-FEM-013</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Colgante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Colgante%20(SKU:%20AR-FEM-013)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-014 ]</div></div><p class="joya-sku">SKU: AR-FEM-014</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Brillante%20(SKU:%20AR-FEM-014)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-015 ]</div></div><p class="joya-sku">SKU: AR-FEM-015</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Mariposa%20Brillante%20(SKU:%20AR-FEM-015)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-016 ]</div></div><p class="joya-sku">SKU: AR-FEM-016</p><p class="joya-material">Plata Ley 925</p><h3>Flecha Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flecha%20Brillante%20(SKU:%20AR-FEM-016)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+        <div class="collection-section" id="aros">
+            <h2 class="collection-title">Aros Pegados</h2>
+            <div class="catalog">
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-001 ]</div></div><p class="joya-sku">SKU: AR-FEM-001</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Rosada</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Rosada%20(SKU:%20AR-FEM-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-002 ]</div></div><p class="joya-sku">SKU: AR-FEM-002</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Simple</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Simple%20(SKU:%20AR-FEM-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-003 ]</div></div><p class="joya-sku">SKU: AR-FEM-003</p><p class="joya-material">Plata Ley 925</p><h3>Trebol Pequeño</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Trebol%20Pequeño%20(SKU:%20AR-FEM-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-004 ]</div></div><p class="joya-sku">SKU: AR-FEM-004</p><p class="joya-material">Plata Ley 925</p><h3>Perlas Blancas Pequeñas</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Perlas%20Blancas%20Pequeñas%20(SKU:%20AR-FEM-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-005 ]</div></div><p class="joya-sku">SKU: AR-FEM-005</p><p class="joya-material">Plata Ley 925</p><h3>Triangulos</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Triangulos%20(SKU:%20AR-FEM-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-006 ]</div></div><p class="joya-sku">SKU: AR-FEM-006</p><p class="joya-material">Plata Ley 925</p><h3>Guindas</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Guindas%20(SKU:%20AR-FEM-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-007 ]</div></div><p class="joya-sku">SKU: AR-FEM-007</p><p class="joya-material">Plata Ley 925</p><h3>Cristal Transparente</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Cristal%20Transparente%20(SKU:%20AR-FEM-007)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-008 ]</div></div><p class="joya-sku">SKU: AR-FEM-008</p><p class="joya-material">Plata Ley 925</p><h3>Circon Pequeño</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Circon%20Pequeño%20(SKU:%20AR-FEM-008)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-009 ]</div></div><p class="joya-sku">SKU: AR-FEM-009</p><p class="joya-material">Plata Ley 925</p><h3>Aros Lamina Color Mariposa</h3><div class="joya-precio">$7.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Aros%20Lamina%20Color%20Mariposa%20(SKU:%20AR-FEM-009)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-010 ]</div></div><p class="joya-sku">SKU: AR-FEM-010</p><p class="joya-material">Plata Ley 925</p><h3>Aros Lamina Color Corazón</h3><div class="joya-precio">$7.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Aros%20Lamina%20Color%20Corazón%20(SKU:%20AR-FEM-010)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-011 ]</div></div><p class="joya-sku">SKU: AR-FEM-011</p><p class="joya-material">Plata Ley 925</p><h3>Flor Brillante</h3><div class="joya-precio">$7.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Brillante%20(SKU:%20AR-FEM-011)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-012 ]</div></div><p class="joya-sku">SKU: AR-FEM-012</p><p class="joya-material">Plata Ley 925</p><h3>Perla Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Perla%20Brillante%20(SKU:%20AR-FEM-012)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-013 ]</div></div><p class="joya-sku">SKU: AR-FEM-013</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Colgante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Colgante%20(SKU:%20AR-FEM-013)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-014 ]</div></div><p class="joya-sku">SKU: AR-FEM-014</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Brillante%20(SKU:%20AR-FEM-014)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-015 ]</div></div><p class="joya-sku">SKU: AR-FEM-015</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Mariposa%20Brillante%20(SKU:%20AR-FEM-015)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-016 ]</div></div><p class="joya-sku">SKU: AR-FEM-016</p><p class="joya-material">Plata Ley 925</p><h3>Flecha Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flecha%20Brillante%20(SKU:%20AR-FEM-016)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+            </div>
         </div>
 
         <!-- ================= SECCIÓN: COLLARES ================= -->
-        <h2 class="collection-title">Collares</h2>
-        <div class="catalog">
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-001 ]</div></div><p class="joya-sku">SKU: COL-GAN-001</p><p class="joya-material">Plata Ley 925</p><h3>Osito</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Osito%20(SKU:%20COL-GAN-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-002 ]</div></div><p class="joya-sku">SKU: COL-GAN-002</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Brillante</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Brillante%20(SKU:%20COL-GAN-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-003 ]</div></div><p class="joya-sku">SKU: COL-GAN-003</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Circones Negros</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Mariposa%20Circones%20Negros%20(SKU:%20COL-GAN-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-004 ]</div></div><p class="joya-sku">SKU: COL-GAN-004</p><p class="joya-material">Plata Ley 925</p><h3>Trebol Circones Negros</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Trebol%20Circones%20Negros%20(SKU:%20COL-GAN-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-005 ]</div></div><p class="joya-sku">SKU: COL-GAN-005</p><p class="joya-material">Plata Ley 925</p><h3>Flor Celeste</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Celeste%20(SKU:%20COL-GAN-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-006 ]</div></div><p class="joya-sku">SKU: COL-GAN-006</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Circon Verde</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Circon%20Verde%20(SKU:%20COL-GAN-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-007 ]</div></div><p class="joya-sku">SKU: COL-GAN-007</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Bright</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Mariposa%20Bright%20(SKU:%20COL-GAN-007)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-008 ]</div></div><p class="joya-sku">SKU: COL-GAN-008</p><p class="joya-material">Plata Ley 925</p><h3>Flor Bright</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Bright%20(SKU:%20COL-GAN-008)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-009 ]</div></div><p class="joya-sku">SKU: COL-GAN-009</p><p class="joya-material">Plata Ley 925</p><h3>Punto Rojo</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Punto%20Rojo%20(SKU:%20COL-GAN-009)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-010 ]</div></div><p class="joya-sku">SKU: COL-GAN-010</p><p class="joya-material">Plata Ley 925</p><h3>Llave de Corazón</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Llave%20de%20Corazón%20(SKU:%20COL-GAN-010)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+        <div class="collection-section" id="collares">
+            <h2 class="collection-title">Collares</h2>
+            <div class="catalog">
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-001 ]</div></div><p class="joya-sku">SKU: COL-GAN-001</p><p class="joya-material">Plata Ley 925</p><h3>Osito</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Osito%20(SKU:%20COL-GAN-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-002 ]</div></div><p class="joya-sku">SKU: COL-GAN-002</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Brillante</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Brillante%20(SKU:%20COL-GAN-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-003 ]</div></div><p class="joya-sku">SKU: COL-GAN-003</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Circones Negros</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Mariposa%20Circones%20Negros%20(SKU:%20COL-GAN-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-004 ]</div></div><p class="joya-sku">SKU: COL-GAN-004</p><p class="joya-material">Plata Ley 925</p><h3>Trebol Circones Negros</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Trebol%20Circones%20Negros%20(SKU:%20COL-GAN-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-005 ]</div></div><p class="joya-sku">SKU: COL-GAN-005</p><p class="joya-material">Plata Ley 925</p><h3>Flor Celeste</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Celeste%20(SKU:%20COL-GAN-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-006 ]</div></div><p class="joya-sku">SKU: COL-GAN-006</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Circon Verde</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Circon%20Verde%20(SKU:%20COL-GAN-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-007 ]</div></div><p class="joya-sku">SKU: COL-GAN-007</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Bright</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Mariposa%20Bright%20(SKU:%20COL-GAN-007)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-008 ]</div></div><p class="joya-sku">SKU: COL-GAN-008</p><p class="joya-material">Plata Ley 925</p><h3>Flor Bright</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Bright%20(SKU:%20COL-GAN-008)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-009 ]</div></div><p class="joya-sku">SKU: COL-GAN-009</p><p class="joya-material">Plata Ley 925</p><h3>Punto Rojo</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Punto%20Rojo%20(SKU:%20COL-GAN-009)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-010 ]</div></div><p class="joya-sku">SKU: COL-GAN-010</p><p class="joya-material">Plata Ley 925</p><h3>Llave de Corazón</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Llave%20de%20Corazón%20(SKU:%20COL-GAN-010)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+            </div>
         </div>
 
         <!-- ================= SECCIÓN: PULSERA HOMBRE ================= -->
-        <h2 class="collection-title">Pulseras Hombre</h2>
-        <div class="catalog">
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-001 ]</div></div><p class="joya-sku">SKU: PUL-HOM-001</p><p class="joya-material">Plata Ley 925</p><h3>Pulsera Gucci</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Pulsera%20Gucci%20(SKU:%20PUL-HOM-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-002 ]</div></div><p class="joya-sku">SKU: PUL-HOM-002</p><p class="joya-material">Plata Ley 925</p><h3>Fígaro</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Fígaro%20(SKU:%20PUL-HOM-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-003 ]</div></div><p class="joya-sku">SKU: PUL-HOM-003</p><p class="joya-material">Plata Ley 925</p><h3>Gucci 3x1</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Gucci%203x1%20(SKU:%20PUL-HOM-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-004 ]</div></div><p class="joya-sku">SKU: PUL-HOM-004</p><p class="joya-material">Plata Ley 925</p><h3>Turbillon</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Turbillon%20(SKU:%20PUL-HOM-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+        <div class="collection-section" id="pulseras">
+            <h2 class="collection-title">Pulseras Hombre</h2>
+            <div class="catalog">
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-001 ]</div></div><p class="joya-sku">SKU: PUL-HOM-001</p><p class="joya-material">Plata Ley 925</p><h3>Pulsera Gucci</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Pulsera%20Gucci%20(SKU:%20PUL-HOM-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-002 ]</div></div><p class="joya-sku">SKU: PUL-HOM-002</p><p class="joya-material">Plata Ley 925</p><h3>Fígaro</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Fígaro%20(SKU:%20PUL-HOM-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-003 ]</div></div><p class="joya-sku">SKU: PUL-HOM-003</p><p class="joya-material">Plata Ley 925</p><h3>Gucci 3x1</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Gucci%203x1%20(SKU:%20PUL-HOM-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-004 ]</div></div><p class="joya-sku">SKU: PUL-HOM-004</p><p class="joya-material">Plata Ley 925</p><h3>Turbillon</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Turbillon%20(SKU:%20PUL-HOM-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+            </div>
         </div>
 
         <!-- ================= SECCIÓN: PACKAGING ================= -->
-        <h2 class="collection-title">Packaging</h2>
-        <div class="catalog">
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ CAJ-PEQ-001 ]</div></div><p class="joya-sku">SKU: CAJ-PEQ-001</p><p class="joya-material">Accesorio</p><h3>Caja Pequeña</h3><div class="joya-precio">$500</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Caja%20Pequeña%20(SKU:%20CAJ-PEQ-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-            <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ CAJ-GRA-001 ]</div></div><p class="joya-sku">SKU: CAJ-GRA-001</p><p class="joya-material">Accesorio</p><h3>Caja Grande</h3><div class="joya-precio">$1.000</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Caja%20Grande%20(SKU:%20CAJ-GRA-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+        <div class="collection-section" id="packaging">
+            <h2 class="collection-title">Packaging</h2>
+            <div class="catalog">
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ CAJ-PEQ-001 ]</div></div><p class="joya-sku">SKU: CAJ-PEQ-001</p><p class="joya-material">Accesorio</p><h3>Caja Pequeña</h3><div class="joya-precio">$500</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Caja%20Pequeña%20(SKU:%20CAJ-PEQ-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ CAJ-GRA-001 ]</div></div><p class="joya-sku">SKU: CAJ-GRA-001</p><p class="joya-material">Accesorio</p><h3>Caja Grande</h3><div class="joya-precio">$1.000</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Caja%20Grande%20(SKU:%20CAJ-GRA-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+            </div>
         </div>
 
     </div>
@@ -314,6 +374,34 @@
         <p>Sígannos en Instagram: <a href="https://instagram.com/joyeria.solar.09" target="_blank">@joyeria.solar.09</a></p>
         <p style="margin-top: 2rem; color: #bbb; font-size: 0.7rem;">&copy; 2026 Joyería Solar. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- LÓGICA FILTRADO DINÁMICO -->
+    <script>
+        function filterCollection(category) {
+            // 1. Manejar estado activo de los botones
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // 2. Mostrar u ocultar secciones
+            const sections = document.querySelectorAll('.collection-section');
+            
+            sections.forEach(section => {
+                if (category === 'todas') {
+                    section.style.display = 'block';
+                    setTimeout(() => section.style.opacity = '1', 10);
+                } else {
+                    if (section.id === category) {
+                        section.style.display = 'block';
+                        setTimeout(() => section.style.opacity = '1', 10);
+                    } else {
+                        section.style.opacity = '0';
+                        section.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
