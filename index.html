@@ -7,11 +7,10 @@
     <style>
         /* Base de Alta Gama - Inspirado en Joyerías de Lujo */
         body {
-            /* Usamos Times New Roman como principal y fuentes elegantes de respaldo */
             font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;
             margin: 0;
             padding: 0;
-            background-color: #ffffff; /* Blanco puro para máxima limpieza */
+            background-color: #ffffff;
             color: #111111;
             -webkit-font-smoothing: antialiased;
         }
@@ -39,28 +38,19 @@
             color: #111111;
         }
 
-        /* Encabezado Principal */
+        /* Encabezado Principal con Logo */
         header {
             text-align: center;
-            padding: 6rem 1rem 4rem 1rem;
+            padding: 4rem 1rem 2rem 1rem;
             background-color: #ffffff;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 3.5rem;
-            letter-spacing: 7px;
-            text-transform: uppercase;
-            font-weight: 300;
-            color: #111111;
-        }
-
-        header p {
-            color: #888888;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-top: 1.2rem;
+        /* Estilo para que el logo sea responsivo y elegante */
+        .logo-shop {
+            max-width: 220px; /* Tamaño ideal para que luzca fino */
+            width: 100%;
+            height: auto;
+            object-fit: contain;
         }
 
         /* Contenedor Principal */
@@ -70,49 +60,25 @@
             padding: 0 1.5rem;
         }
 
-        .intro {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .intro h2 {
-            font-size: 2rem;
-            font-weight: normal;
-            color: #111111;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-        }
-
-        .intro p {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.95rem;
-            color: #666666;
-            max-width: 550px;
-            margin: 0 auto;
-            line-height: 1.8;
-            letter-spacing: 0.5px;
-        }
-
         /* Catálogo en Cuadrícula */
         .catalog {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
+            margin-top: 2rem;
         }
 
-        /* Tarjeta de Joya Estilo Galería de Arte */
+        /* Tarjeta de Joya */
         .joya-card {
             background: #ffffff;
             text-align: center;
             padding-bottom: 2rem;
-            transition: opacity 0.3s ease;
         }
 
-        /* Contenedor de Imagen con proporción fija */
         .joya-img-container {
             width: 100%;
             height: 380px;
-            background-color: #f7f7f7; /* Gris finísimo de fondo para las fotos */
+            background-color: #f7f7f7;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -128,7 +94,6 @@
             letter-spacing: 3px;
         }
 
-        /* Detalles del Producto */
         .joya-card h3 {
             font-size: 1.4rem;
             font-weight: normal;
@@ -155,7 +120,6 @@
             letter-spacing: 1px;
         }
 
-        /* Botón Minimalista de Lujo */
         .btn-pedir {
             display: inline-block;
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -174,7 +138,7 @@
             color: #ffffff;
         }
 
-        /* Pie de Página de Confianza */
+        /* Pie de Página */
         footer {
             border-top: 1px solid #eeeeee;
             padding: 4rem 1rem;
@@ -199,7 +163,6 @@
 </head>
 <body>
 
-    <!-- Menú de navegación minimalista -->
     <nav>
         <a href="#">Inicio</a>
         <a href="#">Colecciones</a>
@@ -208,16 +171,11 @@
     </nav>
 
     <header>
-        <h1>Joyería Solar</h1>
-        <p>Plata Nacional Extra Fina</p>
+        <!-- Tu logo real enlazado directamente -->
+        <img src="https://i.postimg.cc/d1Dq6bGT/9400ae32-fcbd-4f4a-bdab-30380faa4e0f.png" alt="Logo Joyería Solar" class="logo-shop">
     </header>
 
     <div class="container">
-        <div class="intro">
-            <h2>Orfebrería con Identidad</h2>
-            <p>Cada pieza de Joyería Solar es trabajada bajo los más altos estándares del metal nacional 925. Diseños atemporales que combinan la tradición artesanal con la sofisticación moderna.</p>
-        </div>
-
         <div class="catalog">
             
             <!-- Joya 1 -->
@@ -256,7 +214,6 @@
         </div>
     </div>
 
-    <!-- Pie de página profesional -->
     <footer>
         <div class="brand">Joyería Solar</div>
         <p>Garantía de por vida en la pureza del metal.<br>
