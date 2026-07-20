@@ -5,71 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyería Solar | Plata Nacional 925</title>
     <style>
+        /* Estilos Base de Lujo */
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Playfair Display', 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f6f8;
-            color: #333333;
+            background-color: #f8f9fa;
+            color: #2c3e50;
         }
+
+        /* Encabezado Principal */
         header {
-            background-color: #1a252f; /* Fondo oscuro elegante */
+            background-color: #111a22; /* Negro profundo sofisticado */
             color: #ffffff;
             text-align: center;
-            padding: 4rem 1rem;
-            border-bottom: 4px solid #b5a48c; /* Detalle sutil tono dorado/bronce */
+            padding: 5rem 1rem;
+            border-bottom: 3px solid #d4af37; /* Línea dorada sutil */
         }
-        h1 {
+
+        header h1 {
             margin: 0;
-            font-size: 2.8rem;
-            letter-spacing: 3px;
+            font-size: 3.2rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            font-weight: 300;
         }
-        .subtitle {
-            font-style: italic;
+
+        header p {
             color: #bdc3c7;
-            margin-top: 0.5rem;
             font-size: 1.2rem;
+            font-style: italic;
+            margin-top: 0.8rem;
             letter-spacing: 1px;
         }
+
+        /* Contenedor de la Tienda */
         .container {
-            max-width: 800px;
-            margin: 3rem auto;
+            max-width: 1100px;
+            margin: 4rem auto;
             padding: 0 1.5rem;
         }
-        .bienvenida {
-            background: #ffffff;
-            padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
+        .intro {
             text-align: center;
+            margin-bottom: 4rem;
         }
-        h2 {
-            color: #1a252f;
-            margin-top: 0;
-            font-size: 1.8rem;
+
+        .intro h2 {
+            font-size: 2.2rem;
+            color: #111a22;
+            margin-bottom: 1rem;
         }
-        p {
+
+        .intro p {
             font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
             line-height: 1.6;
-            color: #555555;
         }
-        .btn-contacto {
-            display: inline-block;
-            background-color: #25d366; /* Verde WhatsApp */
-            color: white;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            margin-top: 2rem;
+
+        /* Cuadrícula de Productos (Catálogo) */
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Tarjeta de cada Joya */
+        .joya-card {
+            background: #ffffff;
+            border-radius: 0px; /* Bordes rectos para un look más lujoso */
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid #eaeaea;
+            text-align: center;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .joya-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        /* Marcador de posición para las fotos */
+        .joya-img-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #eaeded;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #95a5a6;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .joya-card h3 {
+            font-size: 1.4rem;
+            margin: 0.5rem 0;
+            color: #111a22;
+            font-weight: 400;
+        }
+
+        .joya-material {
+            font-size: 0.85rem;
+            color: #95a5a6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .joya-precio {
+            font-size: 1.3rem;
+            color: #111a22;
             font-weight: bold;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-            transition: transform 0.2s, background 0.3s;
+            margin: 1rem 0;
         }
-        .btn-contacto:hover {
-            background-color: #128c7e;
-            transform: scale(1.03);
+
+        /* Botón de Pedido */
+        .btn-pedir {
+            display: block;
+            background-color: #111a22;
+            color: white;
+            padding: 0.8rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .btn-pedir:hover {
+            background-color: #d4af37; /* Cambia a dorado al pasar el mouse */
+            color: #111a22;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -77,18 +150,45 @@
 
     <header>
         <h1>Joyería Solar</h1>
-        <p class="subtitle">Exclusividad en Plata Nacional 925</p>
+        <p>Exclusividad en Plata Nacional 925</p>
     </header>
 
     <div class="container">
-        <div class="bienvenida">
-            <h2>Brillo y Calidad Hecha a Mano</h2>
-            <p>Bienvenidos a Joyería Solar. Estamos diseñando un catálogo digital exclusivo con lo mejor de nuestra orfebrería en plata nacional 925.</p>
-            <p>Muy pronto podrás revisar aquí mismo nuestras colecciones de anillos, cadenas, aros y pulseras.</p>
+        <div class="intro">
+            <h2>Colección Alta Pureza</h2>
+            <p>Piezas únicas de fabricación nacional, diseñadas para brillar toda la vida. Calidad garantizada en plata ley 925.</p>
+        </div>
+
+        <!-- Sección de Catálogo -->
+        <div class="catalog">
             
-            <a href="https://wa.me/tu_numero_aqui" target="_blank" class="btn-contacto">
-                Contactar por WhatsApp
-            </a>
+            <!-- Joya 1 -->
+            <div class="joya-card">
+                <div class="joya-img-placeholder">FOTO DE ANILLO</div>
+                <p class="joya-material">Plata Nacional 925</p>
+                <h3>Anillo Solitario Real</h3>
+                <div class="joya-precio">$24.990</div>
+                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20el%20Anillo%20Solitario" target="_blank" class="btn-pedir">Consultar Disponibilidad</a>
+            </div>
+
+            <!-- Joya 2 -->
+            <div class="joya-card">
+                <div class="joya-img-placeholder">FOTO DE CADENA</div>
+                <p class="joya-material">Plata Nacional 925</p>
+                <h3>Cadena Turbillon Espejo</h3>
+                <div class="joya-precio">$32.500</div>
+                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20la%20Cadena%20Turbillon" target="_blank" class="btn-pedir">Consultar Disponibilidad</a>
+            </div>
+
+            <!-- Joya 3 -->
+            <div class="joya-card">
+                <div class="joya-img-placeholder">FOTO DE PULSERA</div>
+                <p class="joya-material">Plata Nacional 925</p>
+                <h3>Pulsera Esclava Detalle</h3>
+                <div class="joya-precio">$28.900</div>
+                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20la%20Pulsera%20Esclava" target="_blank" class="btn-pedir">Consultar Disponibilidad</a>
+            </div>
+
         </div>
     </div>
 
