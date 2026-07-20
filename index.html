@@ -10,8 +10,8 @@
             font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;
             margin: 0;
             padding: 0;
-            background-color: #fbf9f5; /* Blanco hueso / marfil sofisticado y luminoso */
-            color: #080808; /* Negro brillante */
+            background-color: #fbf9f5; 
+            color: #080808; 
             -webkit-font-smoothing: antialiased;
         }
 
@@ -41,7 +41,7 @@
         }
 
         .nav-links a {
-            color: #080808; /* Negro brillante */
+            color: #080808; 
             font-weight: 600;
             text-decoration: none;
             transition: opacity 0.3s;
@@ -63,7 +63,7 @@
             letter-spacing: 7px;
             text-transform: uppercase;
             font-weight: 300;
-            color: #080808; /* Negro brillante */
+            color: #080808; 
         }
 
         header p {
@@ -75,19 +75,45 @@
             font-weight: bold;
         }
 
+        /* BARRA DE BÚSQUEDA */
+        .search-container {
+            max-width: 400px;
+            margin: 2rem auto 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.85rem;
+            border: 1px solid rgba(8, 8, 8, 0.15);
+            background-color: #ffffff;
+            color: #080808;
+            letter-spacing: 1px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #ffd700;
+        }
+
         /* BOTÓN "COLECCIONES" DESPLEGABLE */
         .dropdown-container {
             position: relative;
             display: flex;
             justify-content: center;
-            margin: 2rem auto 3rem auto;
+            margin: 1.5rem auto 3rem auto;
             z-index: 100;
         }
 
         .dropdown-btn {
-            background-color: #080808; /* Negro brillante */
-            color: #ffd700; /* Texto Dorado */
-            border: 1px solid #ffd700; /* Detalle dorado */
+            background-color: #080808; 
+            color: #ffd700; 
+            border: 1px solid #ffd700; 
             padding: 0.7rem 2.2rem;
             font-family: 'Helvetica Neue', Arial, sans-serif;
             font-size: 0.75rem;
@@ -108,8 +134,8 @@
             display: none;
             position: absolute;
             top: 100%;
-            background-color: #080808; /* Negro brillante */
-            border: 1px solid #ffd700; /* Dorado brillante */
+            background-color: #080808; 
+            border: 1px solid #ffd700; 
             min-width: 200px;
             box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
             padding: 0.5rem 0;
@@ -166,36 +192,36 @@
             display: block;
             width: 30px;
             height: 1px;
-            background: #ffd700; /* Línea divisoria ahora dorada fina */
+            background: #ffd700; 
             margin: 0.8rem auto 0 auto;
         }
 
-        /* Catálogo en Cuadrícula - AHORA MÁS COMPACTO (Min 210px para meter más por fila) */
+        /* Catálogo en Cuadrícula */
         .catalog {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 1.8rem;
         }
 
-        /* Tarjeta de Joya Más Pequeña y Estilizada */
+        /* Tarjeta de Joya */
         .joya-card {
             background: #ffffff;
             text-align: center;
             padding-bottom: 1.5rem;
-            border: 1px solid #ffd700; /* Borde Dorado Brillante más fino para balancear el tamaño */
+            border: 1px solid #ffd700; 
             box-shadow: 0 3px 10px rgba(0,0,0,0.04);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .joya-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 6px 15px rgba(255,215,0,0.15); /* Sutil destello dorado al pasar el cursor */
+            box-shadow: 0 6px 15px rgba(255,215,0,0.15); 
         }
 
-        /* Contenedor de Imagen Reducido */
+        /* Contenedor de Imagen */
         .joya-img-container {
             width: 100%;
-            height: 240px; /* Reducido de 320px a 240px para hacer la tarjeta más compactas */
+            height: 240px; 
             background-color: #faf8f5;
             display: flex;
             align-items: center;
@@ -213,9 +239,8 @@
             padding: 0 10px;
         }
 
-        /* Fuentes de la tarjeta en Negro Brillante */
         .joya-card h3 {
-            font-size: 1.1rem; /* Un poco más pequeña para encajar el diseño */
+            font-size: 1.1rem; 
             font-weight: bold;
             margin: 0.5rem 0 0.2rem 0;
             color: #080808; 
@@ -250,7 +275,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Botón de Pedido Estilizado */
+        /* Botón de Carrito Estilizado */
         .btn-pedir {
             display: inline-block;
             font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -263,6 +288,7 @@
             font-size: 0.65rem;
             letter-spacing: 1.5px;
             font-weight: bold;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
@@ -270,6 +296,130 @@
             background-color: #ffd700;
             color: #080808;
             border-color: #080808;
+        }
+
+        /* INTERFAZ DEL CARRITO FLOTANTE */
+        .cart-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #080808;
+            border: 1px solid #ffd700;
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .cart-widget:hover {
+            transform: scale(1.05);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ffd700;
+            color: #080808;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-panel {
+            position: fixed;
+            bottom: 6.5rem;
+            right: 2rem;
+            width: 320px;
+            background-color: #ffffff;
+            border: 1px solid #080808;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            padding: 1.5rem;
+            display: none;
+            z-index: 1000;
+        }
+
+        .cart-panel.open {
+            display: block;
+        }
+
+        .cart-panel h4 {
+            margin: 0 0 1rem 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(8,8,8,0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .cart-items {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .cart-item-remove {
+            color: #cc0000;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 1rem;
+        }
+
+        .cart-total {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px dashed rgba(8,8,8,0.2);
+            padding-top: 0.8rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-whatsapp-order {
+            display: block;
+            width: 100%;
+            background-color: #080808;
+            color: #ffd700;
+            border: 1px solid #ffd700;
+            text-align: center;
+            padding: 0.8rem;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp-order:hover {
+            background-color: #ffd700;
+            color: #080808;
         }
 
         /* Pie de Página */
@@ -316,7 +466,12 @@
         <p>Plata Nacional Extra Fina</p>
     </header>
 
-    <!-- Único Botón Rápido "Colecciones" Desplegable -->
+    <!-- BARRA DE BÚSQUEDA INTERACTIVA -->
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar joya o SKU..." onkeyup="searchJewels()">
+    </div>
+
+    <!-- Menú Desplegable de Colecciones -->
     <div class="dropdown-container" id="dropdownMenu">
         <button class="dropdown-btn" onclick="toggleDropdown()">Colecciones ▼</button>
         <ul class="dropdown-menu">
@@ -335,19 +490,19 @@
         <div class="collection-section" id="anillos">
             <h2 class="collection-title">Anillos</h2>
             <div class="catalog">
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-001 ]</div></div><p class="joya-sku">SKU: RING-ANI-001</p><p class="joya-material">Plata Ley 925</p><h3>Solitorio</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Solitorio%20(SKU:%20RING-ANI-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-002 ]</div></div><p class="joya-sku">SKU: RING-ANI-002</p><p class="joya-material">Plata Ley 925</p><h3>Trebol</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Trebol%20(SKU:%20RING-ANI-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-003 ]</div></div><p class="joya-sku">SKU: RING-ANI-003</p><p class="joya-material">Plata Ley 925</p><h3>Ola Brillante</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Ola%20Brillante%20(SKU:%20RING-ANI-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-004 ]</div></div><p class="joya-sku">SKU: RING-ANI-004</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Lineado</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Lineado%20(SKU:%20RING-ANI-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-005 ]</div></div><p class="joya-sku">SKU: RING-ANI-005</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Simple</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Simple%20(SKU:%20RING-ANI-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-006 ]</div></div><p class="joya-sku">SKU: RING-ANI-006</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Partido</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Partido%20(SKU:%20RING-ANI-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-007 ]</div></div><p class="joya-sku">SKU: RING-ANI-007</p><p class="joya-material">Plata Ley 925</p><h3>Cristales</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Cristales%20(SKU:%20RING-ANI-007)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-001 ]</div></div><p class="joya-sku">SKU: RING-ANIL-001</p><p class="joya-material">Plata Ley 925</p><h3>Anillo con Halo</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Anillo%20con%20Halo%20(SKU:%20RING-ANIL-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-002 ]</div></div><p class="joya-sku">SKU: RING-ANIL-002</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Celeste</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Celeste%20(SKU:%20RING-ANIL-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-003 ]</div></div><p class="joya-sku">SKU: RING-ANIL-003</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Amarilla</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Amarilla%20(SKU:%20RING-ANIL-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-004 ]</div></div><p class="joya-sku">SKU: RING-ANIL-004</p><p class="joya-material">Plata Ley 925</p><h3>Piedras Brillantes</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedras%20Brillantes%20(SKU:%20RING-ANIL-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-005 ]</div></div><p class="joya-sku">SKU: RING-ANIL-005</p><p class="joya-material">Plata Ley 925</p><h3>Flor Brillante</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Brillante%20(SKU:%20RING-ANIL-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-006 ]</div></div><p class="joya-sku">SKU: RING-ANIL-006</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Roja</h3><div class="joya-precio">$11.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Roja%20(SKU:%20RING-ANIL-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card" data-name="Solitorio" data-sku="RING-ANI-001" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-001 ]</div></div><p class="joya-sku">SKU: RING-ANI-001</p><p class="joya-material">Plata Ley 925</p><h3>Solitorio</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Solitorio', 'RING-ANI-001', 9990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Trebol" data-sku="RING-ANI-002" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-002 ]</div></div><p class="joya-sku">SKU: RING-ANI-002</p><p class="joya-material">Plata Ley 925</p><h3>Trebol</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Trebol', 'RING-ANI-002', 9990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Ola Brillante" data-sku="RING-ANI-003" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-003 ]</div></div><p class="joya-sku">SKU: RING-ANI-003</p><p class="joya-material">Plata Ley 925</p><h3>Ola Brillante</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Ola Brillante', 'RING-ANI-003', 9990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Corazón Lineado" data-sku="RING-ANI-004" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-004 ]</div></div><p class="joya-sku">SKU: RING-ANI-004</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Lineado</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Corazón Lineado', 'RING-ANI-004', 9990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Corazón Simple" data-sku="RING-ANI-005" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-005 ]</div></div><p class="joya-sku">SKU: RING-ANI-005</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Simple</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Corazón Simple', 'RING-ANI-005', 9990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Corazón Partido" data-sku="RING-ANI-006" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-006 ]</div></div><p class="joya-sku">SKU: RING-ANI-006</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Partido</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Corazón Partido', 'RING-ANI-006', 9990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Cristales" data-sku="RING-ANI-007" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANI-007 ]</div></div><p class="joya-sku">SKU: RING-ANI-007</p><p class="joya-material">Plata Ley 925</p><h3>Cristales</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Cristales', 'RING-ANI-007', 9990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Anillo con Halo" data-sku="RING-ANIL-001" data-price="11990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-001 ]</div></div><p class="joya-sku">SKU: RING-ANIL-001</p><p class="joya-material">Plata Ley 925</p><h3>Anillo con Halo</h3><div class="joya-precio">$11.990</div><button class="btn-pedir" onclick="addToCart('Anillo con Halo', 'RING-ANIL-001', 11990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Piedra Celeste" data-sku="RING-ANIL-002" data-price="11990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-002 ]</div></div><p class="joya-sku">SKU: RING-ANIL-002</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Celeste</h3><div class="joya-precio">$11.990</div><button class="btn-pedir" onclick="addToCart('Piedra Celeste', 'RING-ANIL-002', 11990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Piedra Amarilla" data-sku="RING-ANIL-003" data-price="11990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-003 ]</div></div><p class="joya-sku">SKU: RING-ANIL-003</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Amarilla</h3><div class="joya-precio">$11.990</div><button class="btn-pedir" onclick="addToCart('Piedra Amarilla', 'RING-ANIL-003', 11990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Piedras Brillantes" data-sku="RING-ANIL-004" data-price="11990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-004 ]</div></div><p class="joya-sku">SKU: RING-ANIL-004</p><p class="joya-material">Plata Ley 925</p><h3>Piedras Brillantes</h3><div class="joya-precio">$11.990</div><button class="btn-pedir" onclick="addToCart('Piedras Brillantes', 'RING-ANIL-004', 11990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Flor Brillante" data-sku="RING-ANIL-005" data-price="11990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-005 ]</div></div><p class="joya-sku">SKU: RING-ANIL-005</p><p class="joya-material">Plata Ley 925</p><h3>Flor Brillante</h3><div class="joya-precio">$11.990</div><button class="btn-pedir" onclick="addToCart('Flor Brillante', 'RING-ANIL-005', 11990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Piedra Roja" data-sku="RING-ANIL-006" data-price="11990"><div class="joya-img-container"><div class="joya-img-placeholder">[ RING-ANIL-006 ]</div></div><p class="joya-sku">SKU: RING-ANIL-006</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Roja</h3><div class="joya-precio">$11.990</div><button class="btn-pedir" onclick="addToCart('Piedra Roja', 'RING-ANIL-006', 11990)">Añadir al Carrito</button></div>
             </div>
         </div>
 
@@ -355,22 +510,22 @@
         <div class="collection-section" id="aros">
             <h2 class="collection-title">Aros Pegados</h2>
             <div class="catalog">
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-001 ]</div></div><p class="joya-sku">SKU: AR-FEM-001</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Rosada</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Piedra%20Rosada%20(SKU:%20AR-FEM-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-002 ]</div></div><p class="joya-sku">SKU: AR-FEM-002</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Simple</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Simple%20(SKU:%20AR-FEM-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-003 ]</div></div><p class="joya-sku">SKU: AR-FEM-003</p><p class="joya-material">Plata Ley 925</p><h3>Trebol Pequeño</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Trebol%20Pequeño%20(SKU:%20AR-FEM-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-004 ]</div></div><p class="joya-sku">SKU: AR-FEM-004</p><p class="joya-material">Plata Ley 925</p><h3>Perlas Blancas Pequeñas</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Perlas%20Blancas%20Pequeñas%20(SKU:%20AR-FEM-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-005 ]</div></div><p class="joya-sku">SKU: AR-FEM-005</p><p class="joya-material">Plata Ley 925</p><h3>Triangulos</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Triangulos%20(SKU:%20AR-FEM-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-006 ]</div></div><p class="joya-sku">SKU: AR-FEM-006</p><p class="joya-material">Plata Ley 925</p><h3>Guindas</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Guindas%20(SKU:%20AR-FEM-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-007 ]</div></div><p class="joya-sku">SKU: AR-FEM-007</p><p class="joya-material">Plata Ley 925</p><h3>Cristal Transparente</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Cristal%20Transparente%20(SKU:%20AR-FEM-007)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-008 ]</div></div><p class="joya-sku">SKU: AR-FEM-008</p><p class="joya-material">Plata Ley 925</p><h3>Circon Pequeño</h3><div class="joya-precio">$4.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Circon%20Pequeño%20(SKU:%20AR-FEM-008)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-009 ]</div></div><p class="joya-sku">SKU: AR-FEM-009</p><p class="joya-material">Plata Ley 925</p><h3>Aros Lamina Color Mariposa</h3><div class="joya-precio">$7.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Aros%20Lamina%20Color%20Mariposa%20(SKU:%20AR-FEM-009)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-010 ]</div></div><p class="joya-sku">SKU: AR-FEM-010</p><p class="joya-material">Plata Ley 925</p><h3>Aros Lamina Color Corazón</h3><div class="joya-precio">$7.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Aros%20Lamina%20Color%20Corazón%20(SKU:%20AR-FEM-010)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-011 ]</div></div><p class="joya-sku">SKU: AR-FEM-011</p><p class="joya-material">Plata Ley 925</p><h3>Flor Brillante</h3><div class="joya-precio">$7.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Brillante%20(SKU:%20AR-FEM-011)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-012 ]</div></div><p class="joya-sku">SKU: AR-FEM-012</p><p class="joya-material">Plata Ley 925</p><h3>Perla Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Perla%20Brillante%20(SKU:%20AR-FEM-012)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-013 ]</div></div><p class="joya-sku">SKU: AR-FEM-013</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Colgante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Colgante%20(SKU:%20AR-FEM-013)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-014 ]</div></div><p class="joya-sku">SKU: AR-FEM-014</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Brillante%20(SKU:%20AR-FEM-014)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-015 ]</div></div><p class="joya-sku">SKU: AR-FEM-015</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Mariposa%20Brillante%20(SKU:%20AR-FEM-015)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-016 ]</div></div><p class="joya-sku">SKU: AR-FEM-016</p><p class="joya-material">Plata Ley 925</p><h3>Flecha Brillante</h3><div class="joya-precio">$6.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flecha%20Brillante%20(SKU:%20AR-FEM-016)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card" data-name="Piedra Rosada" data-sku="AR-FEM-001" data-price="4990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-001 ]</div></div><p class="joya-sku">SKU: AR-FEM-001</p><p class="joya-material">Plata Ley 925</p><h3>Piedra Rosada</h3><div class="joya-precio">$4.990</div><button class="btn-pedir" onclick="addToCart('Piedra Rosada', 'AR-FEM-001', 4990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Corazón Simple" data-sku="AR-FEM-002" data-price="4990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-002 ]</div></div><p class="joya-sku">SKU: AR-FEM-002</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Simple</h3><div class="joya-precio">$4.990</div><button class="btn-pedir" onclick="addToCart('Corazón Simple', 'AR-FEM-002', 4990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Trebol Pequeño" data-sku="AR-FEM-003" data-price="4990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-003 ]</div></div><p class="joya-sku">SKU: AR-FEM-003</p><p class="joya-material">Plata Ley 925</p><h3>Trebol Pequeño</h3><div class="joya-precio">$4.990</div><button class="btn-pedir" onclick="addToCart('Trebol Pequeño', 'AR-FEM-003', 4990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Perlas Blancas Pequeñas" data-sku="AR-FEM-004" data-price="4990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-004 ]</div></div><p class="joya-sku">SKU: AR-FEM-004</p><p class="joya-material">Plata Ley 925</p><h3>Perlas Blancas Pequeñas</h3><div class="joya-precio">$4.990</div><button class="btn-pedir" onclick="addToCart('Perlas Blancas Pequeñas', 'AR-FEM-004', 4990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Triangulos" data-sku="AR-FEM-005" data-price="4990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-005 ]</div></div><p class="joya-sku">SKU: AR-FEM-005</p><p class="joya-material">Plata Ley 925</p><h3>Triangulos</h3><div class="joya-precio">$4.990</div><button class="btn-pedir" onclick="addToCart('Triangulos', 'AR-FEM-005', 4990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Guindas" data-sku="AR-FEM-006" data-price="4990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-006 ]</div></div><p class="joya-sku">SKU: AR-FEM-006</p><p class="joya-material">Plata Ley 925</p><h3>Guindas</h3><div class="joya-precio">$4.990</div><button class="btn-pedir" onclick="addToCart('Guindas', 'AR-FEM-006', 4990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Cristal Transparente" data-sku="AR-FEM-007" data-price="4990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-007 ]</div></div><p class="joya-sku">SKU: AR-FEM-007</p><p class="joya-material">Plata Ley 925</p><h3>Cristal Transparente</h3><div class="joya-precio">$4.990</div><button class="btn-pedir" onclick="addToCart('Cristal Transparente', 'AR-FEM-007', 4990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Circon Pequeño" data-sku="AR-FEM-008" data-price="4990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-008 ]</div></div><p class="joya-sku">SKU: AR-FEM-008</p><p class="joya-material">Plata Ley 925</p><h3>Circon Pequeño</h3><div class="joya-precio">$4.990</div><button class="btn-pedir" onclick="addToCart('Circon Pequeño', 'AR-FEM-008', 4990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Aros Lamina Color Mariposa" data-sku="AR-FEM-009" data-price="7990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-009 ]</div></div><p class="joya-sku">SKU: AR-FEM-009</p><p class="joya-material">Plata Ley 925</p><h3>Aros Lamina Color Mariposa</h3><div class="joya-precio">$7.990</div><button class="btn-pedir" onclick="addToCart('Aros Lamina Color Mariposa', 'AR-FEM-009', 7990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Aros Lamina Color Corazón" data-sku="AR-FEM-010" data-price="7990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-010 ]</div></div><p class="joya-sku">SKU: AR-FEM-010</p><p class="joya-material">Plata Ley 925</p><h3>Aros Lamina Color Corazón</h3><div class="joya-precio">$7.990</div><button class="btn-pedir" onclick="addToCart('Aros Lamina Color Corazón', 'AR-FEM-010', 7990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Flor Brillante" data-sku="AR-FEM-011" data-price="7990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-011 ]</div></div><p class="joya-sku">SKU: AR-FEM-011</p><p class="joya-material">Plata Ley 925</p><h3>Flor Brillante</h3><div class="joya-precio">$7.990</div><button class="btn-pedir" onclick="addToCart('Flor Brillante', 'AR-FEM-011', 7990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Perla Brillante" data-sku="AR-FEM-012" data-price="6990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-012 ]</div></div><p class="joya-sku">SKU: AR-FEM-012</p><p class="joya-material">Plata Ley 925</p><h3>Perla Brillante</h3><div class="joya-precio">$6.990</div><button class="btn-pedir" onclick="addToCart('Perla Brillante', 'AR-FEM-012', 6990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Corazón Colgante" data-sku="AR-FEM-013" data-price="6990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-013 ]</div></div><p class="joya-sku">SKU: AR-FEM-013</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Colgante</h3><div class="joya-precio">$6.990</div><button class="btn-pedir" onclick="addToCart('Corazón Colgante', 'AR-FEM-013', 6990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Corazón Brillante" data-sku="AR-FEM-014" data-price="6990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-014 ]</div></div><p class="joya-sku">SKU: AR-FEM-014</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Brillante</h3><div class="joya-precio">$6.990</div><button class="btn-pedir" onclick="addToCart('Corazón Brillante', 'AR-FEM-014', 6990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Mariposa Brillante" data-sku="AR-FEM-015" data-price="6990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-015 ]</div></div><p class="joya-sku">SKU: AR-FEM-015</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Brillante</h3><div class="joya-precio">$6.990</div><button class="btn-pedir" onclick="addToCart('Mariposa Brillante', 'AR-FEM-015', 6990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Flecha Brillante" data-sku="AR-FEM-016" data-price="6990"><div class="joya-img-container"><div class="joya-img-placeholder">[ AR-FEM-016 ]</div></div><p class="joya-sku">SKU: AR-FEM-016</p><p class="joya-material">Plata Ley 925</p><h3>Flecha Brillante</h3><div class="joya-precio">$6.990</div><button class="btn-pedir" onclick="addToCart('Flecha Brillante', 'AR-FEM-016', 6990)">Añadir al Carrito</button></div>
             </div>
         </div>
 
@@ -378,16 +533,16 @@
         <div class="collection-section" id="collares">
             <h2 class="collection-title">Collares</h2>
             <div class="catalog">
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-001 ]</div></div><p class="joya-sku">SKU: COL-GAN-001</p><p class="joya-material">Plata Ley 925</p><h3>Osito</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Osito%20(SKU:%20COL-GAN-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-002 ]</div></div><p class="joya-sku">SKU: COL-GAN-002</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Brillante</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Brillante%20(SKU:%20COL-GAN-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-003 ]</div></div><p class="joya-sku">SKU: COL-GAN-003</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Circones Negros</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Mariposa%20Circones%20Negros%20(SKU:%20COL-GAN-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-004 ]</div></div><p class="joya-sku">SKU: COL-GAN-004</p><p class="joya-material">Plata Ley 925</p><h3>Trebol Circones Negros</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Trebol%20Circones%20Negros%20(SKU:%20COL-GAN-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-005 ]</div></div><p class="joya-sku">SKU: COL-GAN-005</p><p class="joya-material">Plata Ley 925</p><h3>Flor Celeste</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Celeste%20(SKU:%20COL-GAN-005)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-006 ]</div></div><p class="joya-sku">SKU: COL-GAN-006</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Circon Verde</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Corazón%20Circon%20Verde%20(SKU:%20COL-GAN-006)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-007 ]</div></div><p class="joya-sku">SKU: COL-GAN-007</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Bright</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Mariposa%20Bright%20(SKU:%20COL-GAN-007)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-008 ]</div></div><p class="joya-sku">SKU: COL-GAN-008</p><p class="joya-material">Plata Ley 925</p><h3>Flor Bright</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Flor%20Bright%20(SKU:%20COL-GAN-008)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-009 ]</div></div><p class="joya-sku">SKU: COL-GAN-009</p><p class="joya-material">Plata Ley 925</p><h3>Punto Rojo</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Punto%20Rojo%20(SKU:%20COL-GAN-009)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-010 ]</div></div><p class="joya-sku">SKU: COL-GAN-010</p><p class="joya-material">Plata Ley 925</p><h3>Llave de Corazón</h3><div class="joya-precio">$12.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Llave%20de%20Corazón%20(SKU:%20COL-GAN-010)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card" data-name="Osito" data-sku="COL-GAN-001" data-price="12990"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-001 ]</div></div><p class="joya-sku">SKU: COL-GAN-001</p><p class="joya-material">Plata Ley 925</p><h3>Osito</h3><div class="joya-precio">$12.990</div><button class="btn-pedir" onclick="addToCart('Osito', 'COL-GAN-001', 12990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Corazón Brillante" data-sku="COL-GAN-002" data-price="12990"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-002 ]</div></div><p class="joya-sku">SKU: COL-GAN-002</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Brillante</h3><div class="joya-precio">$12.990</div><button class="btn-pedir" onclick="addToCart('Corazón Brillante', 'COL-GAN-002', 12990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Mariposa Circones Negros" data-sku="COL-GAN-003" data-price="12990"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-003 ]</div></div><p class="joya-sku">SKU: COL-GAN-003</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Circones Negros</h3><div class="joya-precio">$12.990</div><button class="btn-pedir" onclick="addToCart('Mariposa Circones Negros', 'COL-GAN-003', 12990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Trebol Circones Negros" data-sku="COL-GAN-004" data-price="12990"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-004 ]</div></div><p class="joya-sku">SKU: COL-GAN-004</p><p class="joya-material">Plata Ley 925</p><h3>Trebol Circones Negros</h3><div class="joya-precio">$12.990</div><button class="btn-pedir" onclick="addToCart('Trebol Circones Negros', 'COL-GAN-004', 12990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Flor Celeste" data-sku="COL-GAN-005" data-price="12990"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-005 ]</div></div><p class="joya-sku">SKU: COL-GAN-005</p><p class="joya-material">Plata Ley 925</p><h3>Flor Celeste</h3><div class="joya-precio">$12.990</div><button class="btn-pedir" onclick="addToCart('Flor Celeste', 'COL-GAN-005', 12990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Corazón Circon Verde" data-sku="COL-GAN-006" data-price="12990"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-006 ]</div></div><p class="joya-sku">SKU: COL-GAN-006</p><p class="joya-material">Plata Ley 925</p><h3>Corazón Circon Verde</h3><div class="joya-precio">$12.990</div><button class="btn-pedir" onclick="addToCart('Corazón Circon Verde', 'COL-GAN-006', 12990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Mariposa Bright" data-sku="COL-GAN-007" data-price="12990"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-007 ]</div></div><p class="joya-sku">SKU: COL-GAN-007</p><p class="joya-material">Plata Ley 925</p><h3>Mariposa Bright</h3><div class="joya-precio">$12.990</div><button class="btn-pedir" onclick="addToCart('Mariposa Bright', 'COL-GAN-007', 12990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Flor Bright" data-sku="COL-GAN-008" data-price="12990"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-008 ]</div></div><p class="joya-sku">SKU: COL-GAN-008</p><p class="joya-material">Plata Ley 925</p><h3>Flor Bright</h3><div class="joya-precio">$12.990</div><button class="btn-pedir" onclick="addToCart('Flor Bright', 'COL-GAN-008', 12990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Punto Rojo" data-sku="COL-GAN-009" data-price="12990"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-009 ]</div></div><p class="joya-sku">SKU: COL-GAN-009</p><p class="joya-material">Plata Ley 925</p><h3>Punto Rojo</h3><div class="joya-precio">$12.990</div><button class="btn-pedir" onclick="addToCart('Punto Rojo', 'COL-GAN-009', 12990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Llave de Corazón" data-sku="COL-GAN-010" data-price="12990"><div class="joya-img-container"><div class="joya-img-placeholder">[ COL-GAN-010 ]</div></div><p class="joya-sku">SKU: COL-GAN-010</p><p class="joya-material">Plata Ley 925</p><h3>Llave de Corazón</h3><div class="joya-precio">$12.990</div><button class="btn-pedir" onclick="addToCart('Llave de Corazón', 'COL-GAN-010', 12990)">Añadir al Carrito</button></div>
             </div>
         </div>
 
@@ -395,10 +550,10 @@
         <div class="collection-section" id="pulseras">
             <h2 class="collection-title">Pulseras Hombre</h2>
             <div class="catalog">
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-001 ]</div></div><p class="joya-sku">SKU: PUL-HOM-001</p><p class="joya-material">Plata Ley 925</p><h3>Pulsera Gucci</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Pulsera%20Gucci%20(SKU:%20PUL-HOM-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-002 ]</div></div><p class="joya-sku">SKU: PUL-HOM-002</p><p class="joya-material">Plata Ley 925</p><h3>Fígaro</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Fígaro%20(SKU:%20PUL-HOM-002)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-003 ]</div></div><p class="joya-sku">SKU: PUL-HOM-003</p><p class="joya-material">Plata Ley 925</p><h3>Gucci 3x1</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Gucci%203x1%20(SKU:%20PUL-HOM-003)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-004 ]</div></div><p class="joya-sku">SKU: PUL-HOM-004</p><p class="joya-material">Plata Ley 925</p><h3>Turbillon</h3><div class="joya-precio">$9.990</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Turbillon%20(SKU:%20PUL-HOM-004)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card" data-name="Pulseras Gucci" data-sku="PUL-HOM-001" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-001 ]</div></div><p class="joya-sku">SKU: PUL-HOM-001</p><p class="joya-material">Plata Ley 925</p><h3>Pulsera Gucci</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Pulseras Gucci', 'PUL-HOM-001', 9990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Fígaro" data-sku="PUL-HOM-002" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-002 ]</div></div><p class="joya-sku">SKU: PUL-HOM-002</p><p class="joya-material">Plata Ley 925</p><h3>Fígaro</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Fígaro', 'PUL-HOM-002', 9990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Gucci 3x1" data-sku="PUL-HOM-003" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-003 ]</div></div><p class="joya-sku">SKU: PUL-HOM-003</p><p class="joya-material">Plata Ley 925</p><h3>Gucci 3x1</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Gucci 3x1', 'PUL-HOM-003', 9990)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Turbillon" data-sku="PUL-HOM-004" data-price="9990"><div class="joya-img-container"><div class="joya-img-placeholder">[ PUL-HOM-004 ]</div></div><p class="joya-sku">SKU: PUL-HOM-004</p><p class="joya-material">Plata Ley 925</p><h3>Turbillon</h3><div class="joya-precio">$9.990</div><button class="btn-pedir" onclick="addToCart('Turbillon', 'PUL-HOM-004', 9990)">Añadir al Carrito</button></div>
             </div>
         </div>
 
@@ -406,11 +561,28 @@
         <div class="collection-section" id="packaging">
             <h2 class="collection-title">Packaging</h2>
             <div class="catalog">
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ CAJ-PEQ-001 ]</div></div><p class="joya-sku">SKU: CAJ-PEQ-001</p><p class="joya-material">Accesorio</p><h3>Caja Pequeña</h3><div class="joya-precio">$500</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Caja%20Pequeña%20(SKU:%20CAJ-PEQ-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
-                <div class="joya-card"><div class="joya-img-container"><div class="joya-img-placeholder">[ CAJ-GRA-001 ]</div></div><p class="joya-sku">SKU: CAJ-GRA-001</p><p class="joya-material">Accesorio</p><h3>Caja Grande</h3><div class="joya-precio">$1.000</div><a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20producto%20Caja%20Grande%20(SKU:%20CAJ-GRA-001)" target="_blank" class="btn-pedir">Solicitar Pieza</a></div>
+                <div class="joya-card" data-name="Caja Pequeña" data-sku="CAJ-PEQ-001" data-price="500"><div class="joya-img-container"><div class="joya-img-placeholder">[ CAJ-PEQ-001 ]</div></div><p class="joya-sku">SKU: CAJ-PEQ-001</p><p class="joya-material">Accesorio</p><h3>Caja Pequeña</h3><div class="joya-precio">$500</div><button class="btn-pedir" onclick="addToCart('Caja Pequeña', 'CAJ-PEQ-001', 500)">Añadir al Carrito</button></div>
+                <div class="joya-card" data-name="Caja Grande" data-sku="CAJ-GRA-001" data-price="1000"><div class="joya-img-container"><div class="joya-img-placeholder">[ CAJ-GRA-001 ]</div></div><p class="joya-sku">SKU: CAJ-GRA-001</p><p class="joya-material">Accesorio</p><h3>Caja Grande</h3><div class="joya-precio">$1.000</div><button class="btn-pedir" onclick="addToCart('Caja Grande', 'CAJ-GRA-001', 1000)">Añadir al Carrito</button></div>
             </div>
         </div>
 
+    </div>
+
+    <!-- SISTEMA DE CARRITO FLOTANTE -->
+    <div class="cart-widget" onclick="toggleCartPanel()">
+        🛒 <div class="cart-badge" id="cartBadge">0</div>
+    </div>
+
+    <div class="cart-panel" id="cartPanel">
+        <h4>Tu Selección</h4>
+        <div class="cart-items" id="cartItems">
+            <!-- Items dinámicos -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">$0</span>
+        </div>
+        <a href="#" class="btn-whatsapp-order" onclick="sendWhatsAppOrder(event)">Enviar Pedido por WhatsApp</a>
     </div>
 
     <!-- Pie de página -->
@@ -422,32 +594,151 @@
         <p style="margin-top: 2rem; color: #444; font-size: 0.7rem;">&copy; 2026 Joyería Solar. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- INTERACTIVIDAD DE MENÚ Y FILTRADO -->
+    <!-- LÓGICA DE PROGRAMACIÓN INTERACTIVA -->
     <script>
+        // --- 1. MENÚ DE CATEGORÍAS ---
         function toggleDropdown() {
             document.getElementById('dropdownMenu').classList.toggle('open');
         }
 
         function filterCollection(category, categoryName) {
             document.getElementById('dropdownMenu').classList.remove('open');
-            
-            const mainBtn = document.querySelector('.dropdown-btn');
-            mainBtn.innerHTML = categoryName + ' ▼';
+            document.querySelector('.dropdown-btn').innerHTML = categoryName + ' ▼';
+
+            // Limpiamos buscador si se usa el filtro por categoría
+            document.getElementById('searchInput').value = "";
 
             const sections = document.querySelectorAll('.collection-section');
             sections.forEach(section => {
                 if (category === 'todas') {
                     section.style.display = 'block';
                 } else {
-                    if (section.id === category) {
-                        section.style.display = 'block';
-                    } else {
-                        section.style.display = 'none';
-                    }
+                    section.style.display = (section.id === category) ? 'block' : 'none';
                 }
             });
         }
 
+        // --- 2. BUSCADOR EN TIEMPO REAL ---
+        function searchJewels() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.joya-card');
+            const sections = document.querySelectorAll('.collection-section');
+
+            // Resetear nombre del botón de colecciones al buscar
+            document.querySelector('.dropdown-btn').innerHTML = 'Colecciones ▼';
+
+            sections.forEach(section => {
+                let hasVisibleCards = false;
+                const sectionCards = section.querySelectorAll('.joya-card');
+                
+                sectionCards.forEach(card => {
+                    const name = card.getAttribute('data-name').toLowerCase();
+                    const sku = card.getAttribute('data-sku').toLowerCase();
+
+                    if (name.includes(query) || sku.includes(query)) {
+                        card.style.display = 'block';
+                        hasVisibleCards = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Si la sección no tiene ningún producto que coincida, se oculta entera
+                section.style.display = hasVisibleCards ? 'block' : 'none';
+            });
+        }
+
+        // --- 3. SISTEMA DEL CARRITO DE COMPRAS ---
+        let cart = [];
+
+        function toggleCartPanel() {
+            document.getElementById('cartPanel').classList.toggle('open');
+        }
+
+        function addToCart(name, sku, price) {
+            // Verificar si el producto ya existe en el carrito
+            const existingItem = cart.find(item => item.sku === sku);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, sku, price, quantity: 1 });
+            }
+            updateCartUI();
+            
+            // Abrir automáticamente el panel al agregar para dar feedback visual
+            document.getElementById('cartPanel').classList.add('open');
+        }
+
+        function removeFromCart(sku) {
+            cart = cart.filter(item => item.sku !== sku);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const itemsContainer = document.getElementById('cartItems');
+            const totalContainer = document.getElementById('cartTotal');
+
+            // Actualizar total artículos badge
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+            badge.innerText = totalItems;
+
+            // Limpiar contenedor de items
+            itemsContainer.innerHTML = "";
+            let grandTotal = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                grandTotal += itemTotal;
+
+                const row = document.createElement('div');
+                row.className = 'cart-item';
+                row.innerHTML = `
+                    <div>
+                        <strong>${item.name}</strong> (x${item.quantity})<br>
+                        <span style="color:#777; font-size:0.7rem;">${item.sku}</span>
+                    </div>
+                    <div style="display:flex; align-items:center;">
+                        <span>$${itemTotal.toLocaleString('es-CL')}</span>
+                        <span class="cart-item-remove" onclick="removeFromCart('${item.sku}')">✕</span>
+                    </div>
+                `;
+                itemsContainer.appendChild(row);
+            });
+
+            totalContainer.innerText = `$${grandTotal.toLocaleString('es-CL')}`;
+        }
+
+        function sendWhatsAppOrder(event) {
+            event.preventDefault();
+            if (cart.length === 0) {
+                alert("Tu carrito está vacío. Agrega algunas joyas antes de enviar.");
+                return;
+            }
+
+            let message = "Hola Joyería Solar! ✨ Me gustaría solicitar las siguientes piezas:\n\n";
+            let grandTotal = 0;
+
+            cart.forEach((item, index) => {
+                const totalItem = item.price * item.quantity;
+                grandTotal += totalItem;
+                message += `${index + 1}. 💎 ${item.name}\n   SKU: ${item.sku}\n   Cant: ${item.quantity} x $${item.price.toLocaleString('es-CL')} = $${totalItem.toLocaleString('es-CL')}\n\n`;
+            });
+
+            message += `-------------------------\n`;
+            message += `💰 TOTAL ORDEN: $${grandTotal.toLocaleString('es-CL')}\n`;
+            message += `-------------------------\n`;
+            message += `Quedo atento(a) para coordinar el pago y envío. ¡Muchas gracias!`;
+
+            // Codificar el mensaje de forma segura para la URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/56967109265?text=${encodedMessage}`;
+            
+            // Abrir WhatsApp en pestaña nueva
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Cerrar menús al hacer clic afuera
         window.onclick = function(event) {
             if (!event.target.matches('.dropdown-btn')) {
                 const dropdown = document.getElementById('dropdownMenu');
@@ -457,6 +748,5 @@
             }
         }
     </script>
-
 </body>
 </html>
