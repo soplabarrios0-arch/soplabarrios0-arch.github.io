@@ -710,6 +710,50 @@
 
         // Inicializar carrito vacío
         updateCartUI();
+        // =========================================================
+// RECONOCIMIENTO DE TECLAS (ESC Y ENTER) - MANTENIENDO TU CÓDIGO
+// =========================================================
+document.addEventListener('keydown', function(event) {
+    const searchInput = document.getElementById('searchInput');
+    const cartPanel = document.getElementById('cartPanel');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    // 1. TECLA ESCAPE (ESC)
+    if (event.key === 'Escape' || event.key === 'Esc') {
+        // A) Si el buscador tiene foco o texto, lo limpia y quita la selección
+        if (searchInput && (document.activeElement === searchInput || searchInput.value !== "")) {
+            searchInput.value = "";
+            if (typeof searchJewels === 'function') {
+                searchJewels(); // Restaura la visibilidad de tus 44 productos
+            }
+            searchInput.blur();
+        }
+
+        // B) Si el carrito está abierto, lo cierra
+        if (cartPanel && cartPanel.classList.contains('open')) {
+            cartPanel.classList.remove('open');
+        }
+
+        // C) Si el menú desplegable está abierto, lo cierra
+        if (dropdownMenu && dropdownMenu.classList.contains('open')) {
+            dropdownMenu.classList.remove('open');
+        }
+    }
+
+    // 2. TECLA ENTER
+    if (event.key === 'Enter') {
+        // A) Si estás escribiendo en el buscador, desmarca la barra para ver la pantalla libremente
+        if (searchInput && document.activeElement === searchInput) {
+            searchInput.blur();
+        } 
+        // B) Si el carrito está abierto, envía la orden directamente a WhatsApp
+        else if (cartPanel && cartPanel.classList.contains('open')) {
+            if (typeof sendWhatsAppOrder === 'function') {
+                sendWhatsAppOrder(event);
+            }
+        }
+    }
+});
     </script>
 </body>
 </html>
