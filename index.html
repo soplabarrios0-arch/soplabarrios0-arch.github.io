@@ -3,194 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joyería Solar | Plata Nacional 925</title>
+    <title>Joyería Solar | Alta Orfebrería en Plata 925</title>
     <style>
-        /* Estilos Base de Lujo */
+        /* Base de Alta Gama - Inspirado en Joyerías de Lujo */
         body {
-            font-family: 'Playfair Display', 'Helvetica Neue', Arial, sans-serif;
+            /* Usamos Times New Roman como principal y fuentes elegantes de respaldo */
+            font-family: 'Times New Roman', Times, Baskerville, Georgia, serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #2c3e50;
+            background-color: #ffffff; /* Blanco puro para máxima limpieza */
+            color: #111111;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Barra de Navegación Fina */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid #eeeeee;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            color: #555555;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #111111;
         }
 
         /* Encabezado Principal */
         header {
-            background-color: #111a22; /* Negro profundo sofisticado */
-            color: #ffffff;
             text-align: center;
-            padding: 5rem 1rem;
-            border-bottom: 3px solid #d4af37; /* Línea dorada sutil */
+            padding: 6rem 1rem 4rem 1rem;
+            background-color: #ffffff;
         }
 
         header h1 {
             margin: 0;
-            font-size: 3.2rem;
-            letter-spacing: 4px;
+            font-size: 3.5rem;
+            letter-spacing: 7px;
             text-transform: uppercase;
             font-weight: 300;
+            color: #111111;
         }
 
         header p {
-            color: #bdc3c7;
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-top: 0.8rem;
-            letter-spacing: 1px;
+            color: #888888;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 1.2rem;
         }
 
-        /* Contenedor de la Tienda */
+        /* Contenedor Principal */
         .container {
-            max-width: 1100px;
-            margin: 4rem auto;
+            max-width: 1150px;
+            margin: 0 auto 5rem auto;
             padding: 0 1.5rem;
         }
 
         .intro {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
 
         .intro h2 {
-            font-size: 2.2rem;
-            color: #111a22;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: normal;
+            color: #111111;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
         }
 
         .intro p {
-            font-size: 1.1rem;
-            color: #7f8c8d;
-            max-width: 600px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.95rem;
+            color: #666666;
+            max-width: 550px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
         }
 
-        /* Cuadrícula de Productos (Catálogo) */
+        /* Catálogo en Cuadrícula */
         .catalog {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
         }
 
-        /* Tarjeta de cada Joya */
+        /* Tarjeta de Joya Estilo Galería de Arte */
         .joya-card {
             background: #ffffff;
-            border-radius: 0px; /* Bordes rectos para un look más lujoso */
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            border: 1px solid #eaeaea;
             text-align: center;
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding-bottom: 2rem;
+            transition: opacity 0.3s ease;
         }
 
-        .joya-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        /* Marcador de posición para las fotos */
-        .joya-img-placeholder {
+        /* Contenedor de Imagen con proporción fija */
+        .joya-img-container {
             width: 100%;
-            height: 250px;
-            background-color: #eaeded;
+            height: 380px;
+            background-color: #f7f7f7; /* Gris finísimo de fondo para las fotos */
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #95a5a6;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             margin-bottom: 1.5rem;
+            border: 1px solid #f0f0f0;
         }
 
+        .joya-img-placeholder {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #999999;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Detalles del Producto */
         .joya-card h3 {
             font-size: 1.4rem;
-            margin: 0.5rem 0;
-            color: #111a22;
-            font-weight: 400;
+            font-weight: normal;
+            margin: 0.8rem 0 0.4rem 0;
+            color: #111111;
+            letter-spacing: 0.5px;
         }
 
         .joya-material {
-            font-size: 0.85rem;
-            color: #95a5a6;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.7rem;
+            color: #888888;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
         }
 
         .joya-precio {
-            font-size: 1.3rem;
-            color: #111a22;
-            font-weight: bold;
-            margin: 1rem 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1rem;
+            color: #111111;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
         }
 
-        /* Botón de Pedido */
+        /* Botón Minimalista de Lujo */
         .btn-pedir {
-            display: block;
-            background-color: #111a22;
-            color: white;
-            padding: 0.8rem;
+            display: inline-block;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            border: 1px solid #111111;
+            color: #111111;
+            padding: 0.7rem 2rem;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: background 0.3s;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
         }
 
         .btn-pedir:hover {
-            background-color: #d4af37; /* Cambia a dorado al pasar el mouse */
-            color: #111a22;
-            font-weight: bold;
+            background-color: #111111;
+            color: #ffffff;
+        }
+
+        /* Pie de Página de Confianza */
+        footer {
+            border-top: 1px solid #eeeeee;
+            padding: 4rem 1rem;
+            text-align: center;
+            background-color: #fafafa;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.8rem;
+            color: #777777;
+            letter-spacing: 1px;
+            line-height: 1.8;
+        }
+
+        footer .brand {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.5rem;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
 
+    <!-- Menú de navegación minimalista -->
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Colecciones</a>
+        <a href="#">Plata 925</a>
+        <a href="#">Contacto</a>
+    </nav>
+
     <header>
         <h1>Joyería Solar</h1>
-        <p>Exclusividad en Plata Nacional 925</p>
+        <p>Plata Nacional Extra Fina</p>
     </header>
 
     <div class="container">
         <div class="intro">
-            <h2>Colección Alta Pureza</h2>
-            <p>Piezas únicas de fabricación nacional, diseñadas para brillar toda la vida. Calidad garantizada en plata ley 925.</p>
+            <h2>Orfebrería con Identidad</h2>
+            <p>Cada pieza de Joyería Solar es trabajada bajo los más altos estándares del metal nacional 925. Diseños atemporales que combinan la tradición artesanal con la sofisticación moderna.</p>
         </div>
 
-        <!-- Sección de Catálogo -->
         <div class="catalog">
             
             <!-- Joya 1 -->
             <div class="joya-card">
-                <div class="joya-img-placeholder">FOTO DE ANILLO</div>
-                <p class="joya-material">Plata Nacional 925</p>
-                <h3>Anillo Solitario Real</h3>
+                <div class="joya-img-container">
+                    <div class="joya-img-placeholder">[ Anillo Solitario ]</div>
+                </div>
+                <p class="joya-material">Plata Ley 925</p>
+                <h3>Anillo Solitario Ígneo</h3>
                 <div class="joya-precio">$24.990</div>
-                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20el%20Anillo%20Solitario" target="_blank" class="btn-pedir">Consultar Disponibilidad</a>
+                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20el%20Anillo%20Solitario" target="_blank" class="btn-pedir">Solicitar Pieza</a>
             </div>
 
             <!-- Joya 2 -->
             <div class="joya-card">
-                <div class="joya-img-placeholder">FOTO DE CADENA</div>
-                <p class="joya-material">Plata Nacional 925</p>
+                <div class="joya-img-container">
+                    <div class="joya-img-placeholder">[ Cadena Turbillon ]</div>
+                </div>
+                <p class="joya-material">Plata Ley 925</p>
                 <h3>Cadena Turbillon Espejo</h3>
                 <div class="joya-precio">$32.500</div>
-                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20la%20Cadena%20Turbillon" target="_blank" class="btn-pedir">Consultar Disponibilidad</a>
+                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20la%20Cadena%20Turbillon" target="_blank" class="btn-pedir">Solicitar Pieza</a>
             </div>
 
             <!-- Joya 3 -->
             <div class="joya-card">
-                <div class="joya-img-placeholder">FOTO DE PULSERA</div>
-                <p class="joya-material">Plata Nacional 925</p>
-                <h3>Pulsera Esclava Detalle</h3>
+                <div class="joya-img-container">
+                    <div class="joya-img-placeholder">[ Pulsera Esclava ]</div>
+                </div>
+                <p class="joya-material">Plata Ley 925</p>
+                <h3>Pulsera Esclava Solar</h3>
                 <div class="joya-precio">$28.900</div>
-                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20la%20Pulsera%20Esclava" target="_blank" class="btn-pedir">Consultar Disponibilidad</a>
+                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20la%20Pulsera%20Esclava" target="_blank" class="btn-pedir">Solicitar Pieza</a>
             </div>
 
         </div>
     </div>
+
+    <!-- Pie de página profesional -->
+    <footer>
+        <div class="brand">Joyería Solar</div>
+        <p>Garantía de por vida en la pureza del metal.<br>
+        Santiago de Chile — Envíos a todo el país.</p>
+        <p style="margin-top: 2rem; color: #bbb; font-size: 0.7rem;">&copy; 2026 Joyería Solar. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
