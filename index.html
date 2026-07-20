@@ -18,15 +18,14 @@
         /* Barra de Navegación Fina y Alineada */
         nav {
             display: flex;
-            justify-content: space-between; /* Separa el logo a la izquierda y enlaces a la derecha */
+            justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
             border-bottom: 1px solid #eeeeee;
         }
 
-        /* Logo pequeño y sutil en el menú superior izquierdo */
         .logo-nav {
-            height: 45px; /* Tamaño discreto y elegante para el menú */
+            height: 45px;
             width: auto;
             object-fit: contain;
         }
@@ -50,10 +49,10 @@
             color: #111111;
         }
 
-        /* Encabezado Principal (Vuelve el Texto Elegante) */
+        /* Encabezado Principal */
         header {
             text-align: center;
-            padding: 6rem 1rem 4rem 1rem;
+            padding: 5rem 1rem 3rem 1rem;
             background-color: #ffffff;
         }
 
@@ -81,12 +80,32 @@
             padding: 0 1.5rem;
         }
 
+        /* Títulos de las Secciones / Colecciones */
+        .collection-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: normal;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin: 5rem 0 2.5rem 0;
+            position: relative;
+            color: #111111;
+        }
+
+        .collection-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #111111;
+            margin: 1rem auto 0 auto;
+        }
+
         /* Catálogo en Cuadrícula */
         .catalog {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
-            margin-top: 2rem;
         }
 
         /* Tarjeta de Joya */
@@ -125,6 +144,7 @@
 
         .joya-material {
             font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.7 subcontinent;
             font-size: 0.7rem;
             color: #888888;
             text-transform: uppercase;
@@ -172,7 +192,6 @@
             line-height: 1.8;
         }
 
-        /* Logo de tamaño completo al final de la página */
         .logo-footer {
             max-width: 220px;
             width: 100%;
@@ -180,18 +199,23 @@
             object-fit: contain;
             margin-bottom: 1.5rem;
         }
+
+        footer a {
+            color: #111111;
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Menú de navegación con el logo a la izquierda -->
+    <!-- Menú de navegación -->
     <nav>
         <img src="https://i.postimg.cc/d1Dq6bGT/9400ae32-fcbd-4f4a-bdab-30380faa4e0f.png" alt="Logo Icono Joyería Solar" class="logo-nav">
         <div class="nav-links">
             <a href="#">Inicio</a>
-            <a href="#">Colecciones</a>
-            <a href="#">Plata 925</a>
-            <a href="#">Contacto</a>
+            <a href="https://instagram.com/joyeria.solar.09" target="_blank">Instagram</a>
+            <a href="https://wa.me/56967109265" target="_blank">WhatsApp</a>
         </div>
     </nav>
 
@@ -201,49 +225,99 @@
     </header>
 
     <div class="container">
+
+        <!-- ================= SECCIÓN 1: ANILLOS ================= -->
+        <h2 class="collection-title">Anillos</h2>
         <div class="catalog">
             
-            <!-- Joya 1 -->
+            <!-- Producto 1 -->
             <div class="joya-card">
                 <div class="joya-img-container">
-                    <div class="joya-img-placeholder">[ Anillo Solitario ]</div>
+                    <div class="joya-img-placeholder">[ Foto Anillo 1 ]</div>
                 </div>
                 <p class="joya-material">Plata Ley 925</p>
                 <h3>Anillo Solitario Ígneo</h3>
                 <div class="joya-precio">$24.990</div>
-                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20el%20Anillo%20Solitario" target="_blank" class="btn-pedir">Solicitar Pieza</a>
+                <a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20Anillo%20Solitario%20Ígneo" target="_blank" class="btn-pedir">Solicitar Pieza</a>
             </div>
 
-            <!-- Joya 2 -->
+            <!-- Producto 2 -->
             <div class="joya-card">
                 <div class="joya-img-container">
-                    <div class="joya-img-placeholder">[ Cadena Turbillon ]</div>
+                    <div class="joya-img-placeholder">[ Foto Anillo 2 ]</div>
+                </div>
+                <p class="joya-material">Plata Ley 925</p>
+                <h3>Anillo Cintillo Brillo</h3>
+                <div class="joya-precio">$19.990</div>
+                <a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20el%20Anillo%20Cintillo%20Brillo" target="_blank" class="btn-pedir">Solicitar Pieza</a>
+            </div>
+
+        </div>
+
+        <!-- ================= SECCIÓN 2: CADENAS Y COLLARES ================= -->
+        <h2 class="collection-title">Cadenas</h2>
+        <div class="catalog">
+            
+            <!-- Producto 3 -->
+            <div class="joya-card">
+                <div class="joya-img-container">
+                    <div class="joya-img-placeholder">[ Foto Cadena 1 ]</div>
                 </div>
                 <p class="joya-material">Plata Ley 925</p>
                 <h3>Cadena Turbillon Espejo</h3>
                 <div class="joya-precio">$32.500</div>
-                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20la%20Cadena%20Turbillon" target="_blank" class="btn-pedir">Solicitar Pieza</a>
+                <a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20la%20Cadena%20Turbillon%20Espejo" target="_blank" class="btn-pedir">Solicitar Pieza</a>
             </div>
 
-            <!-- Joya 3 -->
+            <!-- Producto 4 -->
             <div class="joya-card">
                 <div class="joya-img-container">
-                    <div class="joya-img-placeholder">[ Pulsera Esclava ]</div>
+                    <div class="joya-img-placeholder">[ Foto Cadena 2 ]</div>
+                </div>
+                <p class="joya-material">Plata Ley 925</p>
+                <h3>Cadena Lomo de Serpiente</h3>
+                <div class="joya-precio">$38.900</div>
+                <a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20la%20Cadena%20Lomo%20de%20Serpiente" target="_blank" class="btn-pedir">Solicitar Pieza</a>
+            </div>
+
+        </div>
+
+        <!-- ================= SECCIÓN 3: PULSERAS Y AROS ================= -->
+        <h2 class="collection-title">Pulseras & Aros</h2>
+        <div class="catalog">
+            
+            <!-- Producto 5 -->
+            <div class="joya-card">
+                <div class="joya-img-container">
+                    <div class="joya-img-placeholder">[ Foto Pulsera 1 ]</div>
                 </div>
                 <p class="joya-material">Plata Ley 925</p>
                 <h3>Pulsera Esclava Solar</h3>
                 <div class="joya-precio">$28.900</div>
-                <a href="https://wa.me/tu_numero_aqui?text=Hola!%20Me%20interesa%20la%20Pulsera%20Esclava" target="_blank" class="btn-pedir">Solicitar Pieza</a>
+                <a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20la%20Pulsera%20Esclava%20Solar" target="_blank" class="btn-pedir">Solicitar Pieza</a>
+            </div>
+
+            <!-- Producto 6 -->
+            <div class="joya-card">
+                <div class="joya-img-container">
+                    <div class="joya-img-placeholder">[ Foto Aros 1 ]</div>
+                </div>
+                <p class="joya-material">Plata Ley 925</p>
+                <h3>Aros Argolla Tradición</h3>
+                <div class="joya-precio">$14.990</div>
+                <a href="https://wa.me/56967109265?text=Hola%20Joyería%20Solar!%20Me%20interesa%20los%20Aros%20Argolla%20Tradición" target="_blank" class="btn-pedir">Solicitar Pieza</a>
             </div>
 
         </div>
+
     </div>
 
-    <!-- Pie de página con el logo principal -->
+    <!-- Pie de página -->
     <footer>
-        <img src="https://i.postimg.cc/d1Dq6bGT/9400ae32-fcbd-4f4a-bdab-30380faa4e0f.png" alt="Logo Principal Joyería Solar" class="logo-footer">
+        <img src="https://i.postimg.cc/d1Dq6bGT/9400ae32-fcbd-4f4a-bdab-30380faa4e0f.png" alt="Logo Principal Joyería Solar" class="logo-footer"><br>
         <p>Garantía de por vida en la pureza del metal.<br>
         Santiago de Chile — Envíos a todo el país.</p>
+        <p>Sígannos en Instagram: <a href="https://instagram.com/joyeria.solar.09" target="_blank">@joyeria.solar.09</a></p>
         <p style="margin-top: 2rem; color: #bbb; font-size: 0.7rem;">&copy; 2026 Joyería Solar. Todos los derechos reservados.</p>
     </footer>
 
