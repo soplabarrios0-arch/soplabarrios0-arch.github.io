@@ -642,8 +642,8 @@
     </div>
 
     <script>
-        // CONFIGURACIÓN: Ingrese aquí su número de WhatsApp comercial (con código de país, ej: 56912345678)
-        const WHATSAPP_PHONE = ""; 
+        // CONFIGURACIÓN: Número de WhatsApp comercial asignado
+        const WHATSAPP_PHONE = "56967109265"; 
 
         // LISTADO OFICIAL DE PRODUCTOS
         const catalog = [
@@ -686,10 +686,10 @@
             { id: "COL-GAN-008", name: "Flor Bright", category: "Collares", price: 12990, image: null },
             { id: "COL-GAN-009", name: "Punto Rojo", category: "Collares", price: 12990, image: null },
             { id: "COL-GAN-010", name: "Llave de Corazón", category: "Collares", price: 12990, image: null },
-            { id: "PUL-HOM-001", name: "Pulsera Gucci", category: "Pulsera Hombre", price: 9990, image: "https://i.postimg.cc/mk4VX1ZV/Chat-GPT-Image-16-jul-2026-17-01-07.png" },
+            { id: "PUL-HOM-001", name: "Pulsera Gucci", category: "Pulsera Hombre", price: 9990, image: null },
             { id: "PUL-HOM-002", name: "Fígaro", category: "Pulsera Hombre", price: 9990, image: null },
             { id: "PUL-HOM-003", name: "Gucci 3x1", category: "Pulsera Hombre", price: 9990, image: "https://i.postimg.cc/MKYMjPcb/Cartier-Eslabon.png" },
-            { id: "PUL-HOM-004", name: "Turbillon", category: "Pulsera Hombre", price: 9990, image: null },
+            { id: "PUL-HOM-004", name: "Turbillon", category: "Pulsera Hombre", price: 9990, image: "https://i.postimg.cc/mk4VX1ZV/Chat-GPT-Image-16-jul-2026-17-01-07.png" },
             { id: "CAJ-PEQ-001", name: "Caja Pequeña", category: "Packaging", price: 500, image: null },
             { id: "CAJ-GRA-001", name: "Caja Grande", category: "Packaging", price: 1000, image: null }
         ];
@@ -831,8 +831,7 @@
             text += `\n*Total estimado:* $${total.toLocaleString('es-CL')}`;
             
             const encodedText = encodeURIComponent(text);
-            const targetPhone = WHATSAPP_PHONE ? WHATSAPP_PHONE : "";
-            window.open(`https://wa.me/${targetPhone}?text=${encodedText}`, '_blank');
+            window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodedText}`, '_blank');
         }
 
         // Teclas de acceso rápido (ESC y ENTER)
