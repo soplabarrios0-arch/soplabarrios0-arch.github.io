@@ -74,6 +74,13 @@
 
         .logo-container {
             text-align: center;
+            cursor: pointer;
+            user-select: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-container:hover {
+            opacity: 0.8;
         }
 
         .logo {
@@ -84,6 +91,7 @@
             color: var(--luxury-dark);
             text-transform: uppercase;
             text-decoration: none;
+            display: block;
         }
 
         .logo-subtitle {
@@ -423,8 +431,8 @@
 
     <header>
         <div class="header-container">
-            <div class="logo-container">
-                <a href="#" class="logo">Joyería Solar</a>
+            <div class="logo-container" onclick="resetHome()" title="Volver al inicio">
+                <span class="logo">Joyería Solar</span>
                 <div class="logo-subtitle">Alta Joyería &amp; Plata 925</div>
             </div>
             <div class="controls">
@@ -556,6 +564,13 @@
             });
 
             renderProducts(filtered);
+        }
+
+        function resetHome() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categorySelect').value = '';
+            renderProducts(catalog);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function addToCart(id) {
