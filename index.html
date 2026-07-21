@@ -193,6 +193,7 @@
             gap: 30px;
         }
 
+        /* Tarjeta de Producto Clickable */
         .product-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -203,12 +204,13 @@
             transition: all 0.3s ease;
             text-align: center;
             position: relative;
+            cursor: pointer; /* Indica que toda la tarjeta es interactiva */
         }
 
         .product-card:hover {
             transform: translateY(-5px);
             border-color: var(--tiffany-blue);
-            box-shadow: 0 12px 30px rgba(10, 186, 181, 0.08);
+            box-shadow: 0 12px 30px rgba(10, 186, 181, 0.12);
         }
 
         /* Marco de la Imagen */
@@ -222,7 +224,6 @@
             justify-content: center;
             overflow: hidden;
             border: 1px solid #F0F0F0;
-            cursor: pointer;
         }
 
         .product-image {
@@ -233,7 +234,7 @@
         }
 
         .product-card:hover .product-image {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
         .placeholder-image {
@@ -276,7 +277,6 @@
             font-weight: 500;
             margin-bottom: 4px;
             color: var(--luxury-dark);
-            cursor: pointer;
         }
 
         .product-category {
@@ -354,7 +354,7 @@
             line-height: 1.5;
         }
 
-        /* Panel Lateral */
+        /* Panel Lateral del Carrito */
         #cartPanel {
             position: fixed;
             top: 0;
@@ -465,7 +465,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.65);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -483,16 +483,16 @@
         .modal-content {
             background-color: #FFFFFF;
             width: 90%;
-            max-width: 600px;
-            padding: 30px;
+            max-width: 650px;
+            padding: 35px;
             position: relative;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            gap: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
         }
 
-        @media (min-width: 550px) {
+        @media (min-width: 580px) {
             .modal-content {
                 flex-direction: row;
             }
@@ -507,12 +507,13 @@
             font-size: 1.8rem;
             cursor: pointer;
             color: var(--luxury-dark);
+            line-height: 1;
         }
 
         .modal-img-container {
             width: 100%;
-            max-width: 250px;
-            height: 250px;
+            max-width: 280px;
+            height: 280px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -542,8 +543,8 @@
         }
 
         .modal-title {
-            font-size: 1.4rem;
-            margin: 5px 0;
+            font-size: 1.5rem;
+            margin: 6px 0;
         }
 
         .modal-category {
@@ -552,13 +553,13 @@
             color: var(--tiffany-blue);
             letter-spacing: 2px;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .modal-price {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-style: italic;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
     </style>
 </head>
@@ -626,7 +627,7 @@
         </div>
     </div>
 
-    <!-- Modal de Vista Detallada de Producto -->
+    <!-- Modal de Vista Detallada / Agrandada -->
     <div id="productModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
@@ -708,17 +709,17 @@
                       </div>`;
 
                 grid.innerHTML += `
-                    <div class="product-card">
+                    <div class="product-card" onclick="openModal('${p.id}')">
                         <div>
-                            <div class="product-image-container" onclick="openModal('${p.id}')">
+                            <div class="product-image-container">
                                 ${imageHTML}
                             </div>
                             <div class="product-id">${p.id}</div>
-                            <div class="product-title" onclick="openModal('${p.id}')">${p.name}</div>
+                            <div class="product-title">${p.name}</div>
                             <div class="product-category">${p.category}</div>
                             <div class="product-price">$${p.price.toLocaleString('es-CL')}</div>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart('${p.id}')">Agregar a la Bolsa</button>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart('${p.id}')">Agregar a la Bolsa</button>
                     </div>
                 `;
             });
