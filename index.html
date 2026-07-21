@@ -188,65 +188,31 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Banner Hero */
+        /* BANNER HERO - OPCIÓN A (Recorte Inteligente) */
         .hero-banner {
-            background: linear-gradient(rgba(17, 17, 17, 0.75), rgba(17, 17, 17, 0.75)), url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 4rem 1.5rem;
+            width: 100%;
+            height: 480px;
+            background-image: url('https://i.postimg.cc/fbrXWkS1/Chat-GPT-Image-20-jul-2026-10-58-47-p-m.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
             margin-bottom: 3rem;
-            border-bottom: 2px solid var(--luxury-gold);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            border-bottom: 2px solid var(--tiffany-blue);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            position: relative;
         }
 
-        .hero-brand-logo {
-            width: 140px;
-            height: auto;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
-            transition: transform 0.4s ease;
+        /* Adaptación fluida para Celulares y Tablets */
+        @media (max-width: 768px) {
+            .hero-banner {
+                height: 280px;
+            }
         }
 
-        .hero-brand-logo:hover {
-            transform: scale(1.05);
-        }
-
-        .hero-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.3rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.1rem;
-            font-style: italic;
-            letter-spacing: 2px;
-            max-width: 600px;
-            margin: 0 auto 1.8rem;
-            color: #E2E8E6;
-        }
-
-        .hero-btn {
-            display: inline-block;
-            background-color: var(--tiffany-blue);
-            color: #FFFFFF;
-            padding: 12px 30px;
-            text-decoration: none;
-            font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .hero-btn:hover {
-            background-color: var(--luxury-gold);
-            color: var(--luxury-dark);
+        @media (max-width: 480px) {
+            .hero-banner {
+                height: 220px;
+            }
         }
 
         main {
@@ -797,13 +763,8 @@
         </div>
     </header>
 
-    <!-- Banner Principal / Hero Section -->
-    <section class="hero-banner">
-        <img src="https://i.postimg.cc/7YJJ4YKx/Chat-GPT-Image-20-jul-2026-09-39-09-p-m.png" alt="Logo Emblemático Joyería Solar" class="hero-brand-logo">
-        <h1 class="hero-title">Brillo Infinito en Plata 925</h1>
-        <p class="hero-subtitle">Diseños atemporales diseñados para acompañar tus mejores momentos.</p>
-        <a href="#catalogSection" class="hero-btn">Explorar Colección</a>
-    </section>
+    <!-- Banner Principal Integrado -->
+    <section class="hero-banner" id="heroBanner"></section>
 
     <main id="catalogSection">
         <h2 class="section-title">Catálogo Completo</h2>
@@ -901,7 +862,7 @@
                         price: price,
                         images: imagesArray
                     };
-                }).filter(p => p.id && p.name); // Filtrar filas vacías
+                }).filter(p => p.id && p.name);
 
                 filterProducts();
             } catch (error) {
@@ -995,7 +956,7 @@
             if (currentIdx >= product.images.length) currentIdx = 0;
 
             activeImageIndices[productId] = currentIdx;
-            filterProducts(); // Redibuja respetando el estado actual
+            filterProducts();
         }
 
         function filterProducts() {
@@ -1169,7 +1130,7 @@
             }
         });
 
-        // Inicializar la aplicación al cargar
+        // Inicializar al cargar
         document.addEventListener('DOMContentLoaded', () => {
             fetchCatalogFromSheets();
             updateCart();
