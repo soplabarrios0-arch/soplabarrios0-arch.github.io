@@ -188,7 +188,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Banner Hero con Logo Central (Neuromarketing Point) */
+        /* Banner Hero */
         .hero-banner {
             background: linear-gradient(rgba(17, 17, 17, 0.75), rgba(17, 17, 17, 0.75)), url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
             color: #FFFFFF;
@@ -202,7 +202,6 @@
             justify-content: center;
         }
 
-        /* Estilo para el logo en el héroe */
         .hero-brand-logo {
             width: 140px;
             height: auto;
@@ -276,13 +275,23 @@
             margin: 12px auto 0;
         }
 
+        /* Mensaje de Carga / Estado */
+        .loading-container {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            color: var(--luxury-dark);
+            font-size: 1.1rem;
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 30px;
         }
 
-        /* Tarjeta de Producto Clickable */
         .product-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -713,7 +722,6 @@
     <header>
         <div class="header-container">
             <div class="logo-container" onclick="resetHome()" title="Volver al inicio">
-                <!-- Mini versión del logo en la barra de navegación superior -->
                 <img src="https://i.postimg.cc/7YJJ4YKx/Chat-GPT-Image-20-jul-2026-09-39-09-p-m.png" alt="Joyería Solar Icono" class="header-mini-logo">
                 <div>
                     <span class="logo">Joyería Solar</span>
@@ -733,7 +741,7 @@
                 
                 <div class="price-filter-container">
                     <span>Máx: $<span id="priceLabel">20.000</span></span>
-                    <input type="range" id="priceRange" min="500" max="20000" step="500" value="20000" oninput="filterProducts()">
+                    <input type="range" id="priceRange" min="500" max="30000" step="500" value="30000" oninput="filterProducts()">
                 </div>
             </div>
             <button class="cart-btn" onclick="toggleCart()">
@@ -742,9 +750,8 @@
         </div>
     </header>
 
-    <!-- Banner Principal / Hero Section con Logo Destacado Central -->
+    <!-- Banner Principal / Hero Section -->
     <section class="hero-banner">
-        <!-- Logo Central Integrado con Enfoque de Neuromarketing -->
         <img src="https://i.postimg.cc/7YJJ4YKx/Chat-GPT-Image-20-jul-2026-09-39-09-p-m.png" alt="Logo Emblemático Joyería Solar" class="hero-brand-logo">
         <h1 class="hero-title">Brillo Infinito en Plata 925</h1>
         <p class="hero-subtitle">Diseños atemporales diseñados para acompañar tus mejores momentos.</p>
@@ -753,7 +760,9 @@
 
     <main id="catalogSection">
         <h2 class="section-title">Catálogo Completo</h2>
-        <div id="productsGrid" class="products-grid"></div>
+        <div id="productsGrid" class="products-grid">
+            <div class="loading-container">Cargando colección exclusiva desde Google Sheets...</div>
+        </div>
 
         <section class="about-section">
             <h3>Sobre Joyería Solar</h3>
@@ -812,56 +821,44 @@
 
     <script>
         const WHATSAPP_PHONE = "56967109265"; 
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwRgTZ1SapOZLi0mecLHB4PoxbjDkMlnX2tGgZNLOZpt2sKglnM1vCqyUdcZtIwmWVb/exec";
 
-        const catalog = [
-            { id: "RING-ANI-001", name: "Solitario", category: "Anillos", price: 9990, images: [] },
-            { id: "RING-ANI-002", name: "Trebol", category: "Anillos", price: 9990, images: [] },
-            { id: "RING-ANI-003", name: "Ola Brillante", category: "Anillos", price: 9990, images: [] },
-            { id: "RING-ANI-004", name: "Corazón Lineado", category: "Anillos", price: 9990, images: [] },
-            { id: "RING-ANI-005", name: "Corazón Simple", category: "Anillos", price: 9990, images: ["https://i.postimg.cc/1RNc1Xh8/Chat-GPT-Image-16-jul-2026-15-10-56.png"] },
-            { id: "RING-ANI-006", name: "Corazón Partido", category: "Anillos", price: 9990, images: [] },
-            { id: "RING-ANI-007", name: "Cristales", category: "Anillos", price: 9990, images: [] },
-            { id: "RING-ANIL-001", name: "Anillo con Halo", category: "Anillos", price: 11990, images: ["https://i.postimg.cc/PrWWXN3v/15-jul-2026-21-12-02.png"] },
-            { id: "RING-ANIL-002", name: "Piedra Celeste", category: "Anillos", price: 11990, images: ["https://i.postimg.cc/59gdLrv9/Chat-GPT-Image-16-jul-2026-11-30-18-a-m.png"] },
-            { id: "RING-ANIL-003", name: "Piedra Amarilla", category: "Anillos", price: 11990, images: ["https://i.postimg.cc/L6bjCQTg/Chat-GPT-Image-16-jul-2026-19-45-36.png"] },
-            { id: "RING-ANIL-004", name: "Piedras Brillantes", category: "Anillos", price: 11990, images: ["https://i.postimg.cc/hPp2S01y/Whats-App-Image-2026-07-16-at-7-42-10-PM.jpg"] },
-            { id: "RING-ANIL-005", name: "Flor Brillante", category: "Anillos", price: 11990, images: [] },
-            { id: "RING-ANIL-006", name: "Piedra Roja", category: "Anillos", price: 11990, images: [] },
-            { id: "AR-FEM-001", name: "Piedra Rosada", category: "Aros Pegados", price: 4990, images: [] },
-            { id: "AR-FEM-002", name: "Corazón Simple", category: "Aros Pegados", price: 4990, images: [] },
-            { id: "AR-FEM-003", name: "Trebol Pequeño", category: "Aros Pegados", price: 4990, images: [] },
-            { id: "AR-FEM-004", name: "Perlas Blancas Pequeñas", category: "Aros Pegados", price: 4990, images: [] },
-            { id: "AR-FEM-005", name: "Triangulos", category: "Aros Pegados", price: 4990, images: [] },
-            { id: "AR-FEM-006", name: "Guindas", category: "Aros Pegados", price: 4990, images: [] },
-            { id: "AR-FEM-007", name: "Cristal Transparente", category: "Aros Pegados", price: 4990, images: [] },
-            { id: "AR-FEM-008", name: "Circon Pequeño", category: "Aros Pegados", price: 4990, images: [] },
-            { id: "AR-FEM-009", name: "Aros Lamina Color Mariposa", category: "Aros Pegados", price: 7990, images: ["https://i.postimg.cc/FzgwPZhM/Chat-GPT-Image-16-jul-2026-15-34-32.png"] },
-            { id: "AR-FEM-010", name: "Aros Lamina Color Corazón", category: "Aros Pegados", price: 7990, images: ["https://i.postimg.cc/t4mpwfvX/Chat-GPT-Image-16-jul-2026-22-37-59.png"] },
-            { id: "AR-FEM-011", name: "Flor Brillante", category: "Aros Pegados", price: 7990, images: [] },
-            { id: "AR-FEM-012", name: "Perla Brillante", category: "Aros Pegados", price: 6990, images: [] },
-            { id: "AR-FEM-013", name: "Corazón Colgante", category: "Aros Pegados", price: 6990, images: [] },
-            { id: "AR-FEM-014", name: "Corazón Brillante", category: "Aros Pegados", price: 6990, images: [] },
-            { id: "AR-FEM-015", name: "Mariposa Brillante", category: "Aros Pegados", price: 6990, images: [] },
-            { id: "AR-FEM-016", name: "Flecha Brillante", category: "Aros Pegados", price: 6990, images: [] },
-            { id: "COL-GAN-001", name: "Osito", category: "Collares", price: 12990, images: [] },
-            { id: "COL-GAN-002", name: "Corazón Brillante", category: "Collares", price: 12990, images: [] },
-            { id: "COL-GAN-003", name: "Mariposa Circones Negros", category: "Collares", price: 12990, images: [] },
-            { id: "COL-GAN-004", name: "Trebol Circones Negros", category: "Collares", price: 12990, images: [] },
-            { id: "COL-GAN-005", name: "Flor Celeste", category: "Collares", price: 12990, images: ["https://i.postimg.cc/vTCzxG3v/Chat-GPT-Image-16-jul-2026-22-08-09.png"] },
-            { id: "COL-GAN-006", name: "Corazón Circon Verde", category: "Collares", price: 12990, images: [] },
-            { id: "COL-GAN-007", name: "Mariposa Bright", category: "Collares", price: 12990, images: [] },
-            { id: "COL-GAN-008", name: "Flor Bright", category: "Collares", price: 12990, images: [] },
-            { id: "COL-GAN-009", name: "Punto Rojo", category: "Collares", price: 12990, images: [] },
-            { id: "COL-GAN-010", name: "Llave de Corazón", category: "Collares", price: 12990, images: [] },
-            { id: "PUL-HOM-001", name: "Pulsera Gucci", category: "Pulsera Hombre", price: 9990, images: [] },
-            { id: "PUL-HOM-002", name: "Fígaro", category: "Pulsera Hombre", price: 9990, images: [] },
-            { id: "PUL-HOM-003", name: "Gucci 3x1", category: "Pulsera Hombre", price: 9990, images: ["https://i.postimg.cc/MKYMjPcb/Cartier-Eslabon.png"] },
-            { id: "PUL-HOM-004", name: "Turbillon", category: "Pulsera Hombre", price: 9990, images: ["https://i.postimg.cc/mk4VX1ZV/Chat-GPT-Image-16-jul-2026-17-01-07.png"] },
-            { id: "CAJ-PEQ-001", name: "Caja Pequeña", category: "Packaging", price: 500, images: [] },
-            { id: "CAJ-GRA-001", name: "Caja Grande", category: "Packaging", price: 1000, images: [] }
-        ];
-
+        let catalog = [];
         let cart = JSON.parse(localStorage.getItem('solar_cart')) || [];
+
+        // Cargar productos desde Google Sheets
+        async function fetchCatalogFromSheets() {
+            try {
+                const response = await fetch(APPS_SCRIPT_URL);
+                const rawData = await response.json();
+
+                // Formatear datos leídos desde Google Sheets
+                catalog = rawData.map(row => {
+                    const id = row.ID || row.id || "";
+                    const name = row.Nombre || row.name || row.nombre || "";
+                    const category = row.Categoria || row.category || row.categoria || "";
+                    const price = Number(row.Precio || row.price || row.precio || 0);
+                    const imgUrl = row.Imagen_URL || row.imagen || row.image || row.Image || "";
+                    
+                    return {
+                        id: String(id),
+                        name: String(name),
+                        category: String(category),
+                        price: price,
+                        images: imgUrl ? [imgUrl] : []
+                    };
+                }).filter(p => p.id && p.name); // Filtrar filas vacías
+
+                filterProducts();
+            } catch (error) {
+                console.error("Error al cargar productos desde Apps Script:", error);
+                document.getElementById('productsGrid').innerHTML = `
+                    <div class="loading-container" style="color: #c0392b;">
+                        Ocurrió un inconveniente al cargar el catálogo. Por favor, intenta actualizar la página.
+                    </div>
+                `;
+            }
+        }
 
         function saveCart() {
             localStorage.setItem('solar_cart', JSON.stringify(cart));
@@ -870,6 +867,12 @@
         function renderProducts(products) {
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = '';
+
+            if (products.length === 0) {
+                grid.innerHTML = `<div class="loading-container">No se encontraron productos en esta selección.</div>`;
+                return;
+            }
+
             products.forEach(p => {
                 const mainImg = p.images && p.images.length > 0 ? p.images[0] : null;
                 const imageHTML = mainImg 
@@ -905,7 +908,7 @@
 
             const filtered = catalog.filter(p => {
                 const matchesSearch = p.name.toLowerCase().includes(query) || p.id.toLowerCase().includes(query);
-                const matchesCategory = category === "" || p.category === category;
+                const matchesCategory = category === "" || p.category.toLowerCase() === category.toLowerCase();
                 const matchesPrice = p.price <= maxPrice;
                 return matchesSearch && matchesCategory && matchesPrice;
             });
@@ -916,17 +919,19 @@
         function resetHome() {
             document.getElementById('searchInput').value = '';
             document.getElementById('categorySelect').value = '';
-            document.getElementById('priceRange').value = 20000;
-            document.getElementById('priceLabel').innerText = '20.000';
+            document.getElementById('priceRange').value = 30000;
+            document.getElementById('priceLabel').innerText = '30.000';
             renderProducts(catalog);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function addToCart(id) {
             const product = catalog.find(p => p.id === id);
-            cart.push(product);
-            saveCart();
-            updateCart();
+            if (product) {
+                cart.push(product);
+                saveCart();
+                updateCart();
+            }
         }
 
         function updateCart() {
@@ -1065,8 +1070,11 @@
             }
         });
 
-        renderProducts(catalog);
-        updateCart();
+        // Inicializar la aplicación al cargar
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchCatalogFromSheets();
+            updateCart();
+        });
     </script>
 </body>
 </html>
