@@ -275,7 +275,6 @@
             margin: 12px auto 0;
         }
 
-        /* Mensaje de Carga / Estado */
         .loading-container {
             grid-column: 1 / -1;
             text-align: center;
@@ -311,6 +310,7 @@
             box-shadow: 0 12px 30px rgba(10, 186, 181, 0.12);
         }
 
+        /* Contenedor y Carrusel del Producto */
         .product-image-container {
             width: 100%;
             height: 220px;
@@ -321,17 +321,64 @@
             justify-content: center;
             overflow: hidden;
             border: 1px solid #F0F0F0;
+            position: relative;
         }
 
         .product-image {
             max-width: 100%;
             max-height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: opacity 0.3s ease;
         }
 
-        .product-card:hover .product-image {
-            transform: scale(1.06);
+        .card-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(17, 17, 17, 0.5);
+            color: #FFFFFF;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background 0.3s, opacity 0.3s;
+            z-index: 5;
+            opacity: 0.7;
+        }
+
+        .card-carousel-btn:hover {
+            background: var(--tiffany-blue);
+            opacity: 1;
+        }
+
+        .card-carousel-btn.prev { left: 6px; }
+        .card-carousel-btn.next { right: 6px; }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+            z-index: 5;
+        }
+
+        .carousel-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transition: background 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--tiffany-blue);
         }
 
         .placeholder-image {
@@ -740,7 +787,7 @@
                 </select>
                 
                 <div class="price-filter-container">
-                    <span>Máx: $<span id="priceLabel">20.000</span></span>
+                    <span>Máx: $<span id="priceLabel">30.000</span></span>
                     <input type="range" id="priceRange" min="500" max="30000" step="500" value="30000" oninput="filterProducts()">
                 </div>
             </div>
@@ -825,6 +872,7 @@
 
         let catalog = [];
         let cart = JSON.parse(localStorage.getItem('solar_cart')) || [];
+        let activeImageIndices = {};
 
         // Cargar productos desde Google Sheets
         async function fetchCatalogFromSheets() {
@@ -838,14 +886,20 @@
                     const name = row.Nombre || row.name || row.nombre || "";
                     const category = row.Categoria || row.category || row.categoria || "";
                     const price = Number(row.Precio || row.price || row.precio || 0);
-                    const imgUrl = row.Imagen_URL || row.imagen || row.image || row.Image || "";
+                    const rawImg = row.Imagen_URL || row.imagen || row.image || row.Image || "";
                     
+                    // PROCESAR MÚLTIPLES IMÁGENES MEDIANTE SEPARADOR "|"
+                    let imagesArray = [];
+                    if (rawImg && typeof rawImg === 'string') {
+                        imagesArray = rawImg.split('|').map(url => url.trim()).filter(url => url.length > 0);
+                    }
+
                     return {
                         id: String(id),
                         name: String(name),
                         category: String(category),
                         price: price,
-                        images: imgUrl ? [imgUrl] : []
+                        images: imagesArray
                     };
                 }).filter(p => p.id && p.name); // Filtrar filas vacías
 
@@ -874,20 +928,50 @@
             }
 
             products.forEach(p => {
-                const mainImg = p.images && p.images.length > 0 ? p.images[0] : null;
-                const imageHTML = mainImg 
-                    ? `<img src="${mainImg}" alt="${p.name}" class="product-image">`
-                    : `<div class="placeholder-image">
-                        <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 12,22A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6L9,12H15L12,6Z"/></svg>
-                        <div class="placeholder-text">Joyería Solar</div>
-                      </div>`;
+                if (!(p.id in activeImageIndices)) {
+                    activeImageIndices[p.id] = 0;
+                }
+                const currentIdx = activeImageIndices[p.id];
+                const hasMultiple = p.images && p.images.length > 1;
+
+                let imageContainerHTML = '';
+                if (p.images && p.images.length > 0) {
+                    const mainImg = p.images[currentIdx] || p.images[0];
+                    let controlsHTML = '';
+                    
+                    if (hasMultiple) {
+                        let dotsHTML = p.images.map((_, i) => 
+                            `<span class="carousel-dot ${i === currentIdx ? 'active' : ''}"></span>`
+                        ).join('');
+
+                        controlsHTML = `
+                            <button class="card-carousel-btn prev" onclick="event.stopPropagation(); changeCardImage('${p.id}', -1)">&#10094;</button>
+                            <button class="card-carousel-btn next" onclick="event.stopPropagation(); changeCardImage('${p.id}', 1)">&#10095;</button>
+                            <div class="carousel-dots">${dotsHTML}</div>
+                        `;
+                    }
+
+                    imageContainerHTML = `
+                        <div class="product-image-container">
+                            <img src="${mainImg}" alt="${p.name}" class="product-image" id="img-${p.id}">
+                            ${controlsHTML}
+                        </div>
+                    `;
+                } else {
+                    imageContainerHTML = `
+                        <div class="product-image-container">
+                            <div class="placeholder-image">
+                                <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 12,22A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6L9,12H15L12,6Z"/></svg>
+                                <div class="placeholder-text">Joyería Solar</div>
+                            </div>
+                        </div>
+                    `;
+                }
 
                 grid.innerHTML += `
                     <div class="product-card" onclick="openModal('${p.id}')">
                         <div>
-                            <div class="product-image-container">
-                                ${imageHTML}
-                            </div>
+                            ${imageContainerHTML}
                             <div class="product-id">${p.id}</div>
                             <div class="product-title">${p.name}</div>
                             <div class="product-category">${p.category}</div>
@@ -897,6 +981,21 @@
                     </div>
                 `;
             });
+        }
+
+        // Cambiar imagen en el carrusel de la tarjeta
+        function changeCardImage(productId, direction) {
+            const product = catalog.find(p => p.id === productId);
+            if (!product || !product.images || product.images.length <= 1) return;
+
+            let currentIdx = activeImageIndices[productId] || 0;
+            currentIdx += direction;
+
+            if (currentIdx < 0) currentIdx = product.images.length - 1;
+            if (currentIdx >= product.images.length) currentIdx = 0;
+
+            activeImageIndices[productId] = currentIdx;
+            filterProducts(); // Redibuja respetando el estado actual
         }
 
         function filterProducts() {
