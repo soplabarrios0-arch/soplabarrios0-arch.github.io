@@ -15,10 +15,8 @@
             --tiffany-soft-bg: #F7FAF9;
             --luxury-dark: #111111;
             --luxury-gold: #C5A059;
-            --gold-hover: #9E7D3B;
             --card-bg: #FFFFFF;
             --border-color: #E2E8E6;
-            --border-accent: #0ABAB5;
         }
 
         * {
@@ -190,7 +188,7 @@
         .product-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 25px 20px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -205,37 +203,87 @@
             box-shadow: 0 12px 30px rgba(10, 186, 181, 0.08);
         }
 
+        /* Marco de la Imagen */
+        .product-image-container {
+            width: 100%;
+            height: 220px;
+            background-color: #FAFAFA;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid #F0F0F0;
+        }
+
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #CCCCCC;
+            background-color: #FBFBFB;
+        }
+
+        .placeholder-image svg {
+            width: 40px;
+            height: 40px;
+            fill: #D5D5D5;
+            margin-bottom: 8px;
+        }
+
+        .placeholder-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: #AAAAAA;
+            text-transform: uppercase;
+        }
+
         .product-id {
             font-family: 'Cinzel', 'Times New Roman', serif;
             font-size: 0.68rem;
             color: #888888;
             letter-spacing: 1.5px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
         }
 
         .product-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 500;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             color: var(--luxury-dark);
         }
 
         .product-category {
             font-family: 'Cinzel', 'Times New Roman', serif;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             color: var(--tiffany-blue);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-weight: 600;
         }
 
         .product-price {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 400;
             color: var(--luxury-dark);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-style: italic;
         }
 
@@ -418,53 +466,53 @@
     </div>
 
     <script>
-        // LISTADO OFICIAL DE LOS 44 PRODUCTOS DE JOYERÍA SOLAR
+        // LISTADO OFICIAL DE LOS 44 PRODUCTOS (CON URLS DE FOTOS INTEGRADAS)
         const catalog = [
-            { id: "RING-ANI-001", name: "Solitario", category: "Anillos", price: 9990 },
-            { id: "RING-ANI-002", name: "Trebol", category: "Anillos", price: 9990 },
-            { id: "RING-ANI-003", name: "Ola Brillante", category: "Anillos", price: 9990 },
-            { id: "RING-ANI-004", name: "Corazón Lineado", category: "Anillos", price: 9990 },
-            { id: "RING-ANI-005", name: "Corazón Simple", category: "Anillos", price: 9990 },
-            { id: "RING-ANI-006", name: "Corazón Partido", category: "Anillos", price: 9990 },
-            { id: "RING-ANI-007", name: "Cristales", category: "Anillos", price: 9990 },
-            { id: "RING-ANIL-001", name: "Anillo con Halo", category: "Anillos", price: 11990 },
-            { id: "RING-ANIL-002", name: "Piedra Celeste", category: "Anillos", price: 11990 },
-            { id: "RING-ANIL-003", name: "Piedra Amarilla", category: "Anillos", price: 11990 },
-            { id: "RING-ANIL-004", name: "Piedras Brillantes", category: "Anillos", price: 11990 },
-            { id: "RING-ANIL-005", name: "Flor Brillante", category: "Anillos", price: 11990 },
-            { id: "RING-ANIL-006", name: "Piedra Roja", category: "Anillos", price: 11990 },
-            { id: "AR-FEM-001", name: "Piedra Rosada", category: "Aros Pegados", price: 4990 },
-            { id: "AR-FEM-002", name: "Corazón Simple", category: "Aros Pegados", price: 4990 },
-            { id: "AR-FEM-003", name: "Trebol Pequeño", category: "Aros Pegados", price: 4990 },
-            { id: "AR-FEM-004", name: "Perlas Blancas Pequeñas", category: "Aros Pegados", price: 4990 },
-            { id: "AR-FEM-005", name: "Triangulos", category: "Aros Pegados", price: 4990 },
-            { id: "AR-FEM-006", name: "Guindas", category: "Aros Pegados", price: 4990 },
-            { id: "AR-FEM-007", name: "Cristal Transparente", category: "Aros Pegados", price: 4990 },
-            { id: "AR-FEM-008", name: "Circon Pequeño", category: "Aros Pegados", price: 4990 },
-            { id: "AR-FEM-009", name: "Aros Lamina Color Mariposa", category: "Aros Pegados", price: 7990 },
-            { id: "AR-FEM-010", name: "Aros Lamina Color Corazón", category: "Aros Pegados", price: 7990 },
-            { id: "AR-FEM-011", name: "Flor Brillante", category: "Aros Pegados", price: 7990 },
-            { id: "AR-FEM-012", name: "Perla Brillante", category: "Aros Pegados", price: 6990 },
-            { id: "AR-FEM-013", name: "Corazón Colgante", category: "Aros Pegados", price: 6990 },
-            { id: "AR-FEM-014", name: "Corazón Brillante", category: "Aros Pegados", price: 6990 },
-            { id: "AR-FEM-015", name: "Mariposa Brillante", category: "Aros Pegados", price: 6990 },
-            { id: "AR-FEM-016", name: "Flecha Brillante", category: "Aros Pegados", price: 6990 },
-            { id: "COL-GAN-001", name: "Osito", category: "Collares", price: 12990 },
-            { id: "COL-GAN-002", name: "Corazón Brillante", category: "Collares", price: 12990 },
-            { id: "COL-GAN-003", name: "Mariposa Circones Negros", category: "Collares", price: 12990 },
-            { id: "COL-GAN-004", name: "Trebol Circones Negros", category: "Collares", price: 12990 },
-            { id: "COL-GAN-005", name: "Flor Celeste", category: "Collares", price: 12990 },
-            { id: "COL-GAN-006", name: "Corazón Circon Verde", category: "Collares", price: 12990 },
-            { id: "COL-GAN-007", name: "Mariposa Bright", category: "Collares", price: 12990 },
-            { id: "COL-GAN-008", name: "Flor Bright", category: "Collares", price: 12990 },
-            { id: "COL-GAN-009", name: "Punto Rojo", category: "Collares", price: 12990 },
-            { id: "COL-GAN-010", name: "Llave de Corazón", category: "Collares", price: 12990 },
-            { id: "PUL-HOM-001", name: "Pulsera Gucci", category: "Pulsera Hombre", price: 9990 },
-            { id: "PUL-HOM-002", name: "Fígaro", category: "Pulsera Hombre", price: 9990 },
-            { id: "PUL-HOM-003", name: "Gucci 3x1", category: "Pulsera Hombre", price: 9990 },
-            { id: "PUL-HOM-004", name: "Turbillon", category: "Pulsera Hombre", price: 9990 },
-            { id: "CAJ-PEQ-001", name: "Caja Pequeña", category: "Packaging", price: 500 },
-            { id: "CAJ-GRA-001", name: "Caja Grande", category: "Packaging", price: 1000 }
+            { id: "RING-ANI-001", name: "Solitario", category: "Anillos", price: 9990, image: null },
+            { id: "RING-ANI-002", name: "Trebol", category: "Anillos", price: 9990, image: "https://i.postimg.cc/PrWWXN3v/15-jul-2026-21-12-02.png" },
+            { id: "RING-ANI-003", name: "Ola Brillante", category: "Anillos", price: 9990, image: "https://i.postimg.cc/L6bjCQTg/Chat-GPT-Image-16-jul-2026-19-45-36.png" },
+            { id: "RING-ANI-004", name: "Corazón Lineado", category: "Anillos", price: 9990, image: null },
+            { id: "RING-ANI-005", name: "Corazón Simple", category: "Anillos", price: 9990, image: "https://i.postimg.cc/hPp2S01y/Whats-App-Image-2026-07-16-at-7-42-10-PM.jpg" },
+            { id: "RING-ANI-006", name: "Corazón Partido", category: "Anillos", price: 9990, image: "https://i.postimg.cc/1RNc1Xh8/Chat-GPT-Image-16-jul-2026-15-10-56.png" },
+            { id: "RING-ANI-007", name: "Cristales", category: "Anillos", price: 9990, image: null },
+            { id: "RING-ANIL-001", name: "Anillo con Halo", category: "Anillos", price: 11990, image: null },
+            { id: "RING-ANIL-002", name: "Piedra Celeste", category: "Anillos", price: 11990, image: null },
+            { id: "RING-ANIL-003", name: "Piedra Amarilla", category: "Anillos", price: 11990, image: null },
+            { id: "RING-ANIL-004", name: "Piedras Brillantes", category: "Anillos", price: 11990, image: null },
+            { id: "RING-ANIL-005", name: "Flor Brillante", category: "Anillos", price: 11990, image: null },
+            { id: "RING-ANIL-006", name: "Piedra Roja", category: "Anillos", price: 11990, image: null },
+            { id: "AR-FEM-001", name: "Piedra Rosada", category: "Aros Pegados", price: 4990, image: null },
+            { id: "AR-FEM-002", name: "Corazón Simple", category: "Aros Pegados", price: 4990, image: "https://i.postimg.cc/FzgwPZhM/Chat-GPT-Image-16-jul-2026-15-34-32.png" },
+            { id: "AR-FEM-003", name: "Trebol Pequeño", category: "Aros Pegados", price: 4990, image: "https://i.postimg.cc/hP2BQ6BH/Chat-GPT-Image-16-jul-2026-22-37-53.png" },
+            { id: "AR-FEM-004", name: "Perlas Blancas Pequeñas", category: "Aros Pegados", price: 4990, image: null },
+            { id: "AR-FEM-005", name: "Triangulos", category: "Aros Pegados", price: 4990, image: null },
+            { id: "AR-FEM-006", name: "Guindas", category: "Aros Pegados", price: 4990, image: null },
+            { id: "AR-FEM-007", name: "Cristal Transparente", category: "Aros Pegados", price: 4990, image: null },
+            { id: "AR-FEM-008", name: "Circon Pequeño", category: "Aros Pegados", price: 4990, image: null },
+            { id: "AR-FEM-009", name: "Aros Lamina Color Mariposa", category: "Aros Pegados", price: 7990, image: null },
+            { id: "AR-FEM-010", name: "Aros Lamina Color Corazón", category: "Aros Pegados", price: 7990, image: null },
+            { id: "AR-FEM-011", name: "Flor Brillante", category: "Aros Pegados", price: 7990, image: null },
+            { id: "AR-FEM-012", name: "Perla Brillante", category: "Aros Pegados", price: 6990, image: null },
+            { id: "AR-FEM-013", name: "Corazón Colgante", category: "Aros Pegados", price: 6990, image: null },
+            { id: "AR-FEM-014", name: "Corazón Brillante", category: "Aros Pegados", price: 6990, image: null },
+            { id: "AR-FEM-015", name: "Mariposa Brillante", category: "Aros Pegados", price: 6990, image: null },
+            { id: "AR-FEM-016", name: "Flecha Brillante", category: "Aros Pegados", price: 6990, image: null },
+            { id: "COL-GAN-001", name: "Osito", category: "Collares", price: 12990, image: null },
+            { id: "COL-GAN-002", name: "Corazón Brillante", category: "Collares", price: 12990, image: null },
+            { id: "COL-GAN-003", name: "Mariposa Circones Negros", category: "Collares", price: 12990, image: "https://i.postimg.cc/vTCzxG3v/Chat-GPT-Image-16-jul-2026-22-08-09.png" },
+            { id: "COL-GAN-004", name: "Trebol Circones Negros", category: "Collares", price: 12990, image: null },
+            { id: "COL-GAN-005", name: "Flor Celeste", category: "Collares", price: 12990, image: null },
+            { id: "COL-GAN-006", name: "Corazón Circon Verde", category: "Collares", price: 12990, image: null },
+            { id: "COL-GAN-007", name: "Mariposa Bright", category: "Collares", price: 12990, image: null },
+            { id: "COL-GAN-008", name: "Flor Bright", category: "Collares", price: 12990, image: null },
+            { id: "COL-GAN-009", name: "Punto Rojo", category: "Collares", price: 12990, image: null },
+            { id: "COL-GAN-010", name: "Llave de Corazón", category: "Collares", price: 12990, image: null },
+            { id: "PUL-HOM-001", name: "Pulsera Gucci", category: "Pulsera Hombre", price: 9990, image: "https://i.postimg.cc/mk4VX1ZV/Chat-GPT-Image-16-jul-2026-17-01-07.png" },
+            { id: "PUL-HOM-002", name: "Fígaro", category: "Pulsera Hombre", price: 9990, image: "https://i.postimg.cc/wBgwQb2W/Gucci.png" },
+            { id: "PUL-HOM-003", name: "Gucci 3x1", category: "Pulsera Hombre", price: 9990, image: "https://i.postimg.cc/MKYMjPcb/Cartier-Eslabon.png" },
+            { id: "PUL-HOM-004", name: "Turbillon", category: "Pulsera Hombre", price: 9990, image: null },
+            { id: "CAJ-PEQ-001", name: "Caja Pequeña", category: "Packaging", price: 500, image: null },
+            { id: "CAJ-GRA-001", name: "Caja Grande", category: "Packaging", price: 1000, image: null }
         ];
 
         let cart = [];
@@ -473,9 +521,19 @@
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = '';
             products.forEach(p => {
+                const imageHTML = p.image 
+                    ? `<img src="${p.image}" alt="${p.name}" class="product-image">`
+                    : `<div class="placeholder-image">
+                        <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6L9,12H15L12,6Z"/></svg>
+                        <div class="placeholder-text">Joyería Solar</div>
+                      </div>`;
+
                 grid.innerHTML += `
                     <div class="product-card">
                         <div>
+                            <div class="product-image-container">
+                                ${imageHTML}
+                            </div>
                             <div class="product-id">${p.id}</div>
                             <div class="product-title">${p.name}</div>
                             <div class="product-category">${p.category}</div>
