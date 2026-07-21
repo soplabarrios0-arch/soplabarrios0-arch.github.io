@@ -48,7 +48,7 @@
         header {
             background-color: #FFFFFF;
             color: var(--luxury-dark);
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -77,17 +77,26 @@
             cursor: pointer;
             user-select: none;
             transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .logo-container:hover {
             opacity: 0.8;
         }
 
+        .header-mini-logo {
+            width: 40px;
+            height: auto;
+            object-fit: contain;
+        }
+
         .logo {
             font-family: 'Cinzel', 'Times New Roman', serif;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 500;
-            letter-spacing: 6px;
+            letter-spacing: 4px;
             color: var(--luxury-dark);
             text-transform: uppercase;
             text-decoration: none;
@@ -95,11 +104,11 @@
         }
 
         .logo-subtitle {
-            font-size: 0.7rem;
-            letter-spacing: 4px;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--tiffany-blue);
-            margin-top: 4px;
+            margin-top: 2px;
             font-weight: 600;
         }
 
@@ -179,22 +188,39 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Banner Hero Principales */
+        /* Banner Hero con Logo Central (Neuromarketing Point) */
         .hero-banner {
-            background: linear-gradient(rgba(17, 17, 17, 0.65), rgba(17, 17, 17, 0.65)), url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(17, 17, 17, 0.75), rgba(17, 17, 17, 0.75)), url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
             color: #FFFFFF;
             text-align: center;
-            padding: 5rem 1.5rem;
+            padding: 4rem 1.5rem;
             margin-bottom: 3rem;
             border-bottom: 2px solid var(--luxury-gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilo para el logo en el héroe */
+        .hero-brand-logo {
+            width: 140px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.5));
+            transition: transform 0.4s ease;
+        }
+
+        .hero-brand-logo:hover {
+            transform: scale(1.05);
         }
 
         .hero-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             letter-spacing: 6px;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .hero-subtitle {
@@ -545,7 +571,7 @@
             background-color: var(--luxury-dark);
         }
 
-        /* Modal de Vista Ampliada y Galería Múltiple */
+        /* Modal de Vista Ampliada */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -622,7 +648,6 @@
             object-fit: cover;
         }
 
-        /* Thumbnails de Galería Múltiple */
         .gallery-thumbnails {
             display: flex;
             gap: 8px;
@@ -688,8 +713,12 @@
     <header>
         <div class="header-container">
             <div class="logo-container" onclick="resetHome()" title="Volver al inicio">
-                <span class="logo">Joyería Solar</span>
-                <div class="logo-subtitle">Alta Joyería &amp; Plata 925</div>
+                <!-- Mini versión del logo en la barra de navegación superior -->
+                <img src="https://i.postimg.cc/7YJJ4YKx/Chat-GPT-Image-20-jul-2026-09-39-09-p-m.png" alt="Joyería Solar Icono" class="header-mini-logo">
+                <div>
+                    <span class="logo">Joyería Solar</span>
+                    <div class="logo-subtitle">Alta Joyería &amp; Plata 925</div>
+                </div>
             </div>
             <div class="controls">
                 <input type="text" id="searchInput" placeholder="Buscar joya o código..." oninput="filterProducts()">
@@ -702,7 +731,6 @@
                     <option value="Packaging">Packaging</option>
                 </select>
                 
-                <!-- Filtro Avanzado de Precios -->
                 <div class="price-filter-container">
                     <span>Máx: $<span id="priceLabel">20.000</span></span>
                     <input type="range" id="priceRange" min="500" max="20000" step="500" value="20000" oninput="filterProducts()">
@@ -714,8 +742,10 @@
         </div>
     </header>
 
-    <!-- Banner Principal / Hero Section -->
+    <!-- Banner Principal / Hero Section con Logo Destacado Central -->
     <section class="hero-banner">
+        <!-- Logo Central Integrado con Enfoque de Neuromarketing -->
+        <img src="https://i.postimg.cc/7YJJ4YKx/Chat-GPT-Image-20-jul-2026-09-39-09-p-m.png" alt="Logo Emblemático Joyería Solar" class="hero-brand-logo">
         <h1 class="hero-title">Brillo Infinito en Plata 925</h1>
         <p class="hero-subtitle">Diseños atemporales diseñados para acompañar tus mejores momentos.</p>
         <a href="#catalogSection" class="hero-btn">Explorar Colección</a>
@@ -725,13 +755,11 @@
         <h2 class="section-title">Catálogo Completo</h2>
         <div id="productsGrid" class="products-grid"></div>
 
-        <!-- Sección Sobre Nosotros -->
         <section class="about-section">
             <h3>Sobre Joyería Solar</h3>
             <p>En Joyería Solar seleccionamos meticulosamente cada pieza trabajada en auténtica Plata de Ley 925. Nuestra pasión radica en ofrecer distinción, elegancia y durabilidad superior a través de joyas delicadas y modernas pensadas para realzar tu estilo personal.</p>
         </section>
 
-        <!-- Sección Informativa de Garantía y Envíos -->
         <section class="info-section">
             <div class="info-card">
                 <h4>Garantía de Calidad</h4>
@@ -764,7 +792,7 @@
         </div>
     </div>
 
-    <!-- Modal de Vista Detallada / Agrandada con Galería Múltiple -->
+    <!-- Modal de Vista Detallada -->
     <div id="productModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
@@ -783,10 +811,8 @@
     </div>
 
     <script>
-        // CONFIGURACIÓN: Número de WhatsApp comercial asignado
         const WHATSAPP_PHONE = "56967109265"; 
 
-        // LISTADO OFICIAL DE PRODUCTOS (Soporta múltiples imágenes en el arreglo 'images')
         const catalog = [
             { id: "RING-ANI-001", name: "Solitario", category: "Anillos", price: 9990, images: [] },
             { id: "RING-ANI-002", name: "Trebol", category: "Anillos", price: 9990, images: [] },
@@ -835,7 +861,6 @@
             { id: "CAJ-GRA-001", name: "Caja Grande", category: "Packaging", price: 1000, images: [] }
         ];
 
-        // Persistencia con localStorage
         let cart = JSON.parse(localStorage.getItem('solar_cart')) || [];
 
         function saveCart() {
@@ -1011,7 +1036,6 @@
             window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodedText}`, '_blank');
         }
 
-        // Teclas de acceso rápido (ESC y ENTER)
         document.addEventListener('keydown', function(event) {
             const searchInput = document.getElementById('searchInput');
             const cartPanel = document.getElementById('cartPanel');
@@ -1041,7 +1065,6 @@
             }
         });
 
-        // Inicializar catálogo y carrito guardado al cargar
         renderProducts(catalog);
         updateCart();
     </script>
