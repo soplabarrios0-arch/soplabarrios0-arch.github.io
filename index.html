@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyería Solar - Plata 925</title>
-    <!-- Carga de fuentes tipográficas clásicas y elegantes semejantes a Tiffany & Co. -->
+    <!-- Carga de fuentes tipográficas elegantes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
         body {
             background-color: var(--tiffany-soft-bg);
             color: var(--luxury-dark);
-            padding-bottom: 80px;
+            padding-bottom: 60px;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -222,6 +222,7 @@
             justify-content: center;
             overflow: hidden;
             border: 1px solid #F0F0F0;
+            cursor: pointer;
         }
 
         .product-image {
@@ -275,6 +276,7 @@
             font-weight: 500;
             margin-bottom: 4px;
             color: var(--luxury-dark);
+            cursor: pointer;
         }
 
         .product-category {
@@ -318,6 +320,38 @@
             background-color: var(--luxury-dark) !important;
             color: #FFFFFF !important;
             border-color: var(--luxury-dark) !important;
+        }
+
+        /* Sección de Garantía e Información */
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .info-card {
+            padding: 20px;
+            background-color: #FFFFFF;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-card h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--luxury-dark);
+        }
+
+        .info-card p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
         }
 
         /* Panel Lateral */
@@ -423,6 +457,109 @@
         .btn-whatsapp:hover {
             background-color: var(--luxury-dark);
         }
+
+        /* Modal de Vista Ampliada */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background-color: #FFFFFF;
+            width: 90%;
+            max-width: 600px;
+            padding: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        @media (min-width: 550px) {
+            .modal-content {
+                flex-direction: row;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--luxury-dark);
+        }
+
+        .modal-img-container {
+            width: 100%;
+            max-width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #FAFAFA;
+            border: 1px solid #F0F0F0;
+        }
+
+        .modal-img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-id {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: #888;
+            letter-spacing: 2px;
+        }
+
+        .modal-title {
+            font-size: 1.4rem;
+            margin: 5px 0;
+        }
+
+        .modal-category {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: var(--tiffany-blue);
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .modal-price {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -455,6 +592,22 @@
     <main>
         <h2 class="section-title">Catálogo Completo</h2>
         <div id="productsGrid" class="products-grid"></div>
+
+        <!-- Sección Informativa de Garantía y Envíos -->
+        <section class="info-section">
+            <div class="info-card">
+                <h4>Garantía de Calidad</h4>
+                <p>Todas nuestras joyas están elaboradas en Plata de Ley 925 certificada, garantizando durabilidad y brillo excepcional.</p>
+            </div>
+            <div class="info-card">
+                <h4>Atención Personalizada</h4>
+                <p>Realiza tu pedido en línea y recibe asesoría directa por WhatsApp para coordinar los detalles de entrega.</p>
+            </div>
+            <div class="info-card">
+                <h4>Envíos Seguros</h4>
+                <p>Despachamos de forma rápida y segura a todo el país en empaques diseñados para proteger tus piezas.</p>
+            </div>
+        </section>
     </main>
 
     <!-- Panel Lateral del Carrito -->
@@ -473,8 +626,26 @@
         </div>
     </div>
 
+    <!-- Modal de Vista Detallada de Producto -->
+    <div id="productModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-img-container" id="modalImgContainer"></div>
+            <div class="modal-info">
+                <div class="modal-id" id="modalId"></div>
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <div class="modal-category" id="modalCategory"></div>
+                <div class="modal-price" id="modalPrice"></div>
+                <button class="add-to-cart-btn" id="modalAddBtn">Agregar a la Bolsa</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // LISTADO OFICIAL CON LAS URLS CORREGIDAS
+        // CONFIGURACIÓN: Ingrese aquí su número de WhatsApp comercial (con código de país, ej: 56912345678)
+        const WHATSAPP_PHONE = ""; 
+
+        // LISTADO OFICIAL DE PRODUCTOS
         const catalog = [
             { id: "RING-ANI-001", name: "Solitario", category: "Anillos", price: 9990, image: null },
             { id: "RING-ANI-002", name: "Trebol", category: "Anillos", price: 9990, image: null },
@@ -532,18 +703,18 @@
                 const imageHTML = p.image 
                     ? `<img src="${p.image}" alt="${p.name}" class="product-image">`
                     : `<div class="placeholder-image">
-                        <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6L9,12H15L12,6Z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 12,22A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6L9,12H15L12,6Z"/></svg>
                         <div class="placeholder-text">Joyería Solar</div>
                       </div>`;
 
                 grid.innerHTML += `
                     <div class="product-card">
                         <div>
-                            <div class="product-image-container">
+                            <div class="product-image-container" onclick="openModal('${p.id}')">
                                 ${imageHTML}
                             </div>
                             <div class="product-id">${p.id}</div>
-                            <div class="product-title">${p.name}</div>
+                            <div class="product-title" onclick="openModal('${p.id}')">${p.name}</div>
                             <div class="product-category">${p.category}</div>
                             <div class="product-price">$${p.price.toLocaleString('es-CL')}</div>
                         </div>
@@ -610,6 +781,42 @@
             document.getElementById('cartPanel').classList.toggle('open');
         }
 
+        function openModal(id) {
+            const product = catalog.find(p => p.id === id);
+            if (!product) return;
+
+            document.getElementById('modalId').innerText = product.id;
+            document.getElementById('modalTitle').innerText = product.name;
+            document.getElementById('modalCategory').innerText = product.category;
+            document.getElementById('modalPrice').innerText = `$${product.price.toLocaleString('es-CL')}`;
+
+            const imgContainer = document.getElementById('modalImgContainer');
+            imgContainer.innerHTML = product.image 
+                ? `<img src="${product.image}" alt="${product.name}">`
+                : `<div class="placeholder-image">
+                    <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 12,22A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6L9,12H15L12,6Z"/></svg>
+                    <div class="placeholder-text">Joyería Solar</div>
+                   </div>`;
+
+            const btn = document.getElementById('modalAddBtn');
+            btn.onclick = function() {
+                addToCart(product.id);
+                closeModal();
+            };
+
+            document.getElementById('productModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('active');
+        }
+
+        function closeModalOnOverlay(e) {
+            if (e.target.id === 'productModal') {
+                closeModal();
+            }
+        }
+
         function sendWhatsAppOrder() {
             if(cart.length === 0) {
                 alert("La bolsa de compras está vacía.");
@@ -624,15 +831,21 @@
             text += `\n*Total estimado:* $${total.toLocaleString('es-CL')}`;
             
             const encodedText = encodeURIComponent(text);
-            window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+            const targetPhone = WHATSAPP_PHONE ? WHATSAPP_PHONE : "";
+            window.open(`https://wa.me/${targetPhone}?text=${encodedText}`, '_blank');
         }
 
-        // RECONOCIMIENTO DE TECLAS (ESC Y ENTER)
+        // Teclas de acceso rápido (ESC y ENTER)
         document.addEventListener('keydown', function(event) {
             const searchInput = document.getElementById('searchInput');
             const cartPanel = document.getElementById('cartPanel');
+            const modal = document.getElementById('productModal');
 
             if (event.key === 'Escape' || event.key === 'Esc') {
+                if (modal.classList.contains('active')) {
+                    closeModal();
+                    return;
+                }
                 if (searchInput && (document.activeElement === searchInput || searchInput.value !== "")) {
                     searchInput.value = "";
                     filterProducts();
