@@ -4,71 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joyería Solar - Plata 925</title>
+    <!-- Carga de fuentes tipográficas clásicas y elegantes semejantes a Tiffany & Co. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-cream: #FDFBF7;
-            --text-dark: #1A1A1A;
-            --gold: #D4AF37;
-            --gold-hover: #AA8C2C;
+            --tiffany-blue: #0ABAB5;
+            --tiffany-soft-bg: #F7FAF9;
+            --luxury-dark: #111111;
+            --luxury-gold: #C5A059;
+            --gold-hover: #9E7D3B;
             --card-bg: #FFFFFF;
-            --border-color: #E8E2D5;
+            --border-color: #E2E8E6;
+            --border-accent: #0ABAB5;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Playfair Display', 'Times New Roman', Times, serif;
         }
 
         body {
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            padding-bottom: 60px;
+            background-color: var(--tiffany-soft-bg);
+            color: var(--luxury-dark);
+            padding-bottom: 80px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Banner superior */
+        .top-bar {
+            background-color: var(--luxury-dark);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 8px 15px;
+            font-size: 0.75rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-family: 'Cinzel', 'Times New Roman', serif;
         }
 
         header {
-            background-color: var(--text-dark);
-            color: var(--bg-cream);
-            padding: 1rem 2rem;
+            background-color: #FFFFFF;
+            color: var(--luxury-dark);
+            padding: 1.8rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
         .header-container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
+        }
+
+        @media (min-width: 850px) {
+            .header-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .logo-container {
+            text-align: center;
         }
 
         .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--gold);
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 6px;
+            color: var(--luxury-dark);
             text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .logo-subtitle {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--tiffany-blue);
+            margin-top: 4px;
+            font-weight: 600;
         }
 
         .controls {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             align-items: center;
-            flex-grow: 1;
-            max-width: 600px;
+            width: 100%;
+            max-width: 650px;
         }
 
         input[type="text"], select {
-            padding: 8px 12px;
-            border-radius: 4px;
+            padding: 10px 16px;
             border: 1px solid var(--border-color);
+            background-color: #FFFFFF;
+            color: var(--luxury-dark);
             outline: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, select:focus {
+            border-color: var(--tiffany-blue);
+            box-shadow: 0 0 5px rgba(10, 186, 181, 0.2);
         }
 
         #searchInput {
@@ -76,115 +126,159 @@
         }
 
         .cart-btn {
-            background-color: var(--gold);
-            color: var(--text-dark);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: bold;
+            background-color: transparent;
+            color: var(--luxury-dark);
+            border: 1px solid var(--luxury-dark);
+            padding: 10px 22px;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             cursor: pointer;
             position: relative;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .cart-btn:hover {
-            background-color: var(--gold-hover);
-            color: #fff;
+            background-color: var(--luxury-dark);
+            color: #FFFFFF;
         }
 
         .cart-count {
-            background-color: #d9534f;
-            color: white;
+            background-color: var(--tiffany-blue);
+            color: #FFFFFF;
             border-radius: 50%;
-            padding: 2px 6px;
-            font-size: 0.8rem;
-            margin-left: 5px;
+            padding: 2px 7px;
+            font-size: 0.75rem;
+            margin-left: 6px;
+            font-family: 'Playfair Display', serif;
         }
 
         main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            max-width: 1280px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            color: var(--luxury-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background-color: var(--tiffany-blue);
+            margin: 12px auto 0;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
         }
 
         .product-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 15px;
+            padding: 25px 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+            border-color: var(--tiffany-blue);
+            box-shadow: 0 12px 30px rgba(10, 186, 181, 0.08);
         }
 
         .product-id {
-            font-size: 0.75rem;
-            color: #888;
-            margin-bottom: 5px;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            font-size: 0.68rem;
+            color: #888888;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
         }
 
         .product-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-size: 1.15rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--luxury-dark);
         }
 
         .product-category {
-            font-size: 0.85rem;
-            color: var(--gold-hover);
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            font-size: 0.72rem;
+            color: var(--tiffany-blue);
             text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
             font-weight: 600;
-            margin-bottom: 10px;
         }
 
         .product-price {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--luxury-dark);
+            margin-bottom: 20px;
+            font-style: italic;
         }
 
         .add-to-cart-btn {
-            background-color: var(--text-dark);
-            color: var(--bg-cream);
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
+            background-color: transparent;
+            color: var(--luxury-dark);
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .add-to-cart-btn {
+            background-color: var(--tiffany-blue);
+            color: #FFFFFF;
+            border-color: var(--tiffany-blue);
         }
 
         .add-to-cart-btn:hover {
-            background-color: var(--gold);
-            color: var(--text-dark);
+            background-color: var(--luxury-dark) !important;
+            color: #FFFFFF !important;
+            border-color: var(--luxury-dark) !important;
         }
 
-        /* Panel Carrito */
+        /* Panel Lateral */
         #cartPanel {
             position: fixed;
             top: 0;
-            right: -350px;
-            width: 350px;
+            right: -400px;
+            width: 100%;
+            max-width: 400px;
             height: 100%;
-            background-color: var(--card-bg);
-            box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+            background-color: #FFFFFF;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
             z-index: 1000;
-            transition: right 0.3s ease;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
-            padding: 20px;
+            padding: 30px;
         }
 
         #cartPanel.open {
@@ -196,90 +290,135 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .cart-header h3 {
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         .close-cart {
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             cursor: pointer;
+            color: var(--luxury-dark);
+            line-height: 1;
         }
 
         .cart-items {
             flex-grow: 1;
             overflow-y: auto;
+            padding-right: 5px;
         }
 
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--tiffany-soft-bg);
+        }
+
+        .cart-item-title {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .cart-item-details {
+            font-size: 0.82rem;
+            color: #666;
+            font-style: italic;
         }
 
         .cart-footer {
             border-top: 1px solid var(--border-color);
-            padding-top: 15px;
+            padding-top: 20px;
+            margin-top: 10px;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-family: 'Cinzel', 'Times New Roman', serif;
         }
 
         .btn-whatsapp {
             width: 100%;
-            background-color: #25D366;
-            color: white;
+            background-color: var(--tiffany-blue);
+            color: #FFFFFF;
             border: none;
-            padding: 12px;
-            border-radius: 4px;
-            font-weight: bold;
+            padding: 15px;
+            font-family: 'Cinzel', 'Times New Roman', serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             cursor: pointer;
-            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--luxury-dark);
         }
     </style>
 </head>
 <body>
 
+    <div class="top-bar">Colección Exclusiva Plata 925 — Joyería Solar</div>
+
     <header>
         <div class="header-container">
-            <div class="logo">Joyería Solar</div>
+            <div class="logo-container">
+                <a href="#" class="logo">Joyería Solar</a>
+                <div class="logo-subtitle">Alta Joyería &amp; Plata 925</div>
+            </div>
             <div class="controls">
                 <input type="text" id="searchInput" placeholder="Buscar joya o código..." oninput="filterProducts()">
                 <select id="categorySelect" onchange="filterProducts()">
-                    <option value="">Todas las categorías</option>
+                    <option value="">Todas las colecciones</option>
                     <option value="Anillos">Anillos</option>
                     <option value="Aros Pegados">Aros Pegados</option>
                     <option value="Collares">Collares</option>
-                    <option value="Pulsera Hombre">Pulsera Hombre</option>
+                    <option value="Pulsera Hombre">Pulseras Hombre</option>
                     <option value="Packaging">Packaging</option>
                 </select>
             </div>
             <button class="cart-btn" onclick="toggleCart()">
-                Carrito <span id="cartCount" class="cart-count">0</span>
+                Bolsa <span id="cartCount" class="cart-count">0</span>
             </button>
         </div>
     </header>
 
     <main>
+        <h2 class="section-title">Catálogo Completo</h2>
         <div id="productsGrid" class="products-grid"></div>
     </main>
 
     <!-- Panel Lateral del Carrito -->
     <div id="cartPanel">
         <div class="cart-header">
-            <h3>Tu Pedido</h3>
+            <h3>Tu Selección</h3>
             <button class="close-cart" onclick="toggleCart()">&times;</button>
         </div>
         <div id="cartItems" class="cart-items"></div>
         <div class="cart-footer">
-            <div><strong>Total: </strong>$<span id="cartTotal">0</span></div>
-            <button class="btn-whatsapp" onclick="sendWhatsAppOrder()">Enviar pedido por WhatsApp</button>
+            <div class="cart-total-row">
+                <span>Total Est.</span>
+                <span>$<span id="cartTotal">0</span></span>
+            </div>
+            <button class="btn-whatsapp" onclick="sendWhatsAppOrder()">Solicitar Asesoría por WhatsApp</button>
         </div>
     </div>
 
     <script>
-        // LISTADO OFICIAL DE LOS 44 PRODUCTOS
+        // LISTADO OFICIAL DE LOS 44 PRODUCTOS DE JOYERÍA SOLAR
         const catalog = [
             { id: "RING-ANI-001", name: "Solitario", category: "Anillos", price: 9990 },
             { id: "RING-ANI-002", name: "Trebol", category: "Anillos", price: 9990 },
@@ -342,7 +481,7 @@
                             <div class="product-category">${p.category}</div>
                             <div class="product-price">$${p.price.toLocaleString('es-CL')}</div>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart('${p.id}')">Agregar al carrito</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('${p.id}')">Agregar a la Bolsa</button>
                     </div>
                 `;
             });
@@ -378,10 +517,10 @@
                 itemsContainer.innerHTML += `
                     <div class="cart-item">
                         <div>
-                            <strong>${item.name}</strong><br>
-                            <small>${item.id} - $${item.price.toLocaleString('es-CL')}</small>
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-details">${item.id} — $${item.price.toLocaleString('es-CL')}</div>
                         </div>
-                        <button onclick="removeFromCart(${index})" style="background:none;border:none;color:red;cursor:pointer;">&times;</button>
+                        <button onclick="removeFromCart(${index})" style="background:none;border:none;color:#999;font-size:1.2rem;cursor:pointer;">&times;</button>
                     </div>
                 `;
             });
@@ -400,23 +539,22 @@
 
         function sendWhatsAppOrder() {
             if(cart.length === 0) {
-                alert("El carrito está vacío.");
+                alert("La bolsa de compras está vacía.");
                 return;
             }
-            let text = "Hola, me gustaría pedir los siguientes productos de Joyería Solar:\n\n";
+            let text = "Hola Joyería Solar, me gustaría solicitar los siguientes productos de su colección:\n\n";
             let total = 0;
             cart.forEach(item => {
-                text += `- ${item.name} (${item.id}): $${item.price.toLocaleString('es-CL')}\n`;
+                text += `• ${item.name} (${item.id}): $${item.price.toLocaleString('es-CL')}\n`;
                 total += item.price;
             });
-            text += `\n*Total:* $${total.toLocaleString('es-CL')}`;
+            text += `\n*Total estimado:* $${total.toLocaleString('es-CL')}`;
             
             const encodedText = encodeURIComponent(text);
-            // Reemplaza con tu número de teléfono si es necesario
             window.open(`https://wa.me/?text=${encodedText}`, '_blank');
         }
 
-        // SISTEMA DE ATENCIÓN DE TECLAS (ESC Y ENTER)
+        // RECONOCIMIENTO DE TECLAS (ESC Y ENTER)
         document.addEventListener('keydown', function(event) {
             const searchInput = document.getElementById('searchInput');
             const cartPanel = document.getElementById('cartPanel');
